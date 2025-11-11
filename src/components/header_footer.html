@@ -3,16 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>header, footer component</title>
+    <title>header, footer, navigation component</title>
     <link rel="stylesheet" href="/src/common/index.css" />
     <link rel="stylesheet" href="/src/style.css" />
   </head>
   <body>
     <div class="warp">
-      <h1>헤더, 푸터 컴포넌트</h1>
+      <h1>헤더, 푸터, 네비 컴포넌트</h1>
 
       <hr />
       <h2>디폴트 헤더</h2>
+      <br />
+
       <header id="default_header">
         <div class="wrapHeader">
           <img src="/src/styles/assets/LOGO.svg" class="logo" /><img />
@@ -29,6 +31,8 @@
 
       <br />
       <h2>로그인 이후 헤더</h2>
+      <br />
+
       <header id="variant_header">
         <div class="wrapHeader">
           <img src="/src/styles/assets/LOGO.svg" class="logo" /><img />
@@ -52,6 +56,73 @@
           </div>
         </div>
       </header>
+      <br />
+      <br />
+      <hr />
+      <h2>네비게이터</h2>
+      <br />
+
+      <nav>
+        <div class="navWrap">
+          <div class="navItem active" id="home">
+            <img
+              class="icon On"
+              src="/src/styles/assets/home Property 1=On.svg"
+              alt="홈"
+            />
+            <img
+              class="icon Off"
+              src="/src/styles/assets/home Property 1=Off.svg"
+              alt="홈으로 가기"
+            />
+            <span>홈</span>
+          </div>
+          <div class="navItem" id="navSearch">
+            <img
+              class="icon On"
+              src="/src/styles/assets/search Property 1=On.svg"
+              alt="발견탭"
+            />
+            <img
+              class="icon Off"
+              src="/src/styles/assets/search Property 1=Off.svg"
+              alt="발견 탭으로 가기"
+            />
+            <span>발견</span>
+          </div>
+          <div class="navItem" id="write">
+            <img
+              class="icon On"
+              src="/src/styles/assets/write Property 1=On.svg"
+              alt="글쓰기탭"
+            />
+            <img
+              class="icon Off"
+              src="/src/styles/assets/write Property 1=Off.svg"
+              alt="글쓰러 가기"
+            />
+            <span>글쓰기</span>
+          </div>
+          <div class="navItem" id="myBox">
+            <img
+              class="icon On"
+              src="/src/styles/assets/mybox Property 1=On.svg"
+              alt="내서랍탭"
+            />
+            <img
+              class="icon Off"
+              src="/src/styles/assets/mybox Property 1=Off.svg"
+              alt="내서랍으로 가기"
+            />
+            <span>내 서랍</span>
+          </div>
+        </div>
+      </nav>
+      <br />
+      <hr />
+      <br />
+      <h2>푸터</h2>
+      <br />
     </div>
   </body>
 </html>

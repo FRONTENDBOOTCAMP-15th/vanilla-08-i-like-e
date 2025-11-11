@@ -1,3 +1,7 @@
+body {
+  background-color: #f7f7f7;
+}
+
 .warp {
   min-width: 360px;
   max-width: 768px;
@@ -5,7 +9,7 @@
 }
 
 header {
-  background-color: fff;
+  background-color: #fff;
 }
 
 .wrapHeader {
@@ -39,4 +43,39 @@ header {
   height: 30px;
   border-radius: 100%;
   margin: 0 10px;
+}
+
+nav {
+  background-color: #fff;
+}
+
+.navWrap {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 18px 0 8px 0;
+}
+
+.navItem {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.navItem .On {
+  display: none;
+}
+
+.navItem.active .On {
+  display: block;
+}
+
+.navItem.active .Off {
+  display: none;
+}
+
+span {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 10px;
 }
