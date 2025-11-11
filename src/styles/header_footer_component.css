@@ -1,0 +1,42 @@
+.warp {
+  min-width: 360px;
+  max-width: 768px;
+  margin: 0 auto;
+}
+
+header {
+  background-color: fff;
+}
+
+.wrapHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 10px 20px;
+}
+
+.rightContent {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.login {
+  background-color: #231f20;
+  text-decoration: none;
+  color: white;
+  border-radius: 15px;
+  padding: 5px 13px;
+}
+
+.alertOn {
+  display: none;
+}
+
+.profileWarp {
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  margin: 0 10px;
+}
