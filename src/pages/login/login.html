@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>login page</title>
+    <link rel="stylesheet" href="/src/common/index.css" />
+    <link rel="stylesheet" href="/src/pages/login/login.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <h1 class="sr-only">브런치 로그인</h1>
+      <header class="header">
+        <img src="/src/styles/assets/login.image.svg" class="logo" />
+        <h2>브런치 작가로 데뷔하세요.</h2>
+        <p>진솔한 에세이부터 업계 전문 지식까지,</p>
+        <p>당신의 이야기를 세상에 선보이세요.</p>
+      </header>
+      <main class="main">
+        <form class="login-form">
+          <label for="email" class="sr-only">이메일</label>
+          <input type="email" id="email" placeholder="이메일" required />
+
+          <label for="password" class="sr-only">비밀번호</label>
+          <input
+            type="password"
+            id="password"
+            placeholder="비밀번호"
+            required
+          />
+
+          <label class="save-login">
+            <input type="checkbox" />
+            <span>로그인 정보 저장</span>
+          </label>
+
+          <button type="submit" class="btn-login">로그인</button>
+          <button type="button" class="btn-signup">회원가입</button>
+        </form>
+      </main>
+    </div>
+  </body>
+</html>
