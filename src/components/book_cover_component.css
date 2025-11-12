@@ -7,7 +7,7 @@
 }
 
 .bookCover {
-  width: 46px;
+  max-width: 46px;
   height: 60px;
   background-color: #fff;
   padding: 6.75px 0 0 6px;
@@ -16,7 +16,7 @@
   left: 17px;
 }
 
-.bookname {
+.bookCover .bookname {
   max-height: 27px;
   font-size: 7px;
   font-weight: 300;
@@ -24,7 +24,7 @@
   word-break: keep-all;
 }
 
-.writer {
+.bookCover .writer {
   /* padding: 12px 0 7px 0px; */
   margin-top: 12px;
   max-height: 7px;
