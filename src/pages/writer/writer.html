@@ -47,11 +47,11 @@
         <div class="profile_top">
           <div class="profile_details">
             <div class="profile_text">
-              <h2 class="writer_name">AB</h2>
+              <span class="writer_name">AB</span>
               <p class="writer_job">기획자</p>
             </div>
             <img
-              src="\src\pages\writer\assets\image.svg"
+              src="./assets/image.svg"
               alt="작가 프로필 사진"
               class="profile_img"
             />
@@ -60,15 +60,18 @@
             <div class="writer_stats">
               <div>
                 <span>구독자 </span>
-                <p>30</p>
+                <span class="stat_value">30</span>
               </div>
               <div>
                 <span>관심작가</span>
-                <p>16</p>
+                <span class="stat_value">16</span>
               </div>
             </div>
             <div>
-              <button class="subscribe_btn subscribed">구독중</button>
+              <button class="subscribe_btn subscribed">
+                <span class="checkmark">✓</span>
+                구독중
+              </button>
             </div>
           </div>
         </div>
@@ -77,142 +80,36 @@
       <!-- 글 목록 -->
       <section class="article_list">
         <article class="article_item">
-          <a href="/category/first_time" class="category_link"
-            >취준은 처음이라</a
-          >
-          <h4 class="title">[취업특강] 노션 포트폴리오 만들기</h4>
+          <a href="/category/first-time" class="category_link">취준은 처음이라</a>
+          <p class="title">[취업특강] 노션 포트폴리오 만들기</p>
           <p class="desc">
             with 노슈니, 슈크림 마을, 마포청년나루 | 취업 준비를 위해 반드시
-            필요한 첫 세 가지...
+            필요한 것 세 가지. 자기소개서, 이력서, 포트폴리오. 그중에서 최...
           </p>
-          <p class="date">댓글 0 · Jul 02, 2024</p>
+          <p class="date">댓글0 · Jul 02. 2024</p>
         </article>
 
         <article class="article_item">
-          <a href="/category/first-time" class="category_link"
-            >취준은 처음이라</a
-          >
-          <h4 class="title">[취업특강] 노션 포트폴리오 만들기</h4>
+          <a href="/category/first-time" class="category_link">취준은 처음이라</a>
+          <p class="title">[취업특강] 노션 포트폴리오 만들기</p>
           <p class="desc">
             with 노슈니, 슈크림 마을, 마포청년나루 | 취업 준비를 위해 반드시
-            필요한 첫 세 가지...
+            필요한 것 세 가지. 자기소개서, 이력서, 포트폴리오. 그중에서 최...
           </p>
-          <p class="date">댓글 0 · Jul 02, 2024</p>
+          <p class="date">댓글0 · Jul 02. 2024</p>
         </article>
         <article class="article_item">
-          <a href="/category/first-time" class="category_link"
-            >취준은 처음이라</a
-          >
-          <h4 class="title">[취업특강] 노션 포트폴리오 만들기</h4>
+          <a href="/category/first-time" class="category_link">취준은 처음이라</a>
+          <p class="title">[취업특강] 노션 포트폴리오 만들기</p>
           <p class="desc">
             with 노슈니, 슈크림 마을, 마포청년나루 | 취업 준비를 위해 반드시
-            필요한 첫 세 가지...
+            필요한 것 세 가지. 자기소개서, 이력서, 포트폴리오. 그중에서 최...
           </p>
-          <p class="date">댓글 0 · Jul 02, 2024</p>
+          <p class="date">댓글0 · Jul 02. 2024</p>
         </article>
       </section>
     </main>
 
-    <!-- 네비게이션 (하단 고정) -->
-    <nav>
-      <div class="navWrap">
-        <div class="navItem" id="home">
-          <img
-            class="icon On"
-            src="../../styles/assets/home Property 1=On.svg"
-            alt="홈"
-          />
-          <img
-            class="icon Off"
-            src="../../styles/assets/home Property 1=Off.svg"
-            alt="홈으로 가기"
-          />
-          <span>홈</span>
-        </div>
-        <div class="navItem active" id="navSearch">
-          <img
-            class="icon On"
-            src="../../styles/assets/search Property 1=On.svg"
-            alt="발견탭"
-          />
-          <img
-            class="icon Off"
-            src="../../styles/assets/search Property 1=Off.svg"
-            alt="발견 탭으로 가기"
-          />
-          <span>발견</span>
-        </div>
-        <div class="navItem" id="write">
-          <img
-            class="icon On"
-            src="../../styles/assets/write Property 1=On.svg"
-            alt="글쓰기탭"
-          />
-          <img
-            class="icon Off"
-            src="../../styles/assets/write Property 1=Off.svg"
-            alt="글쓰러 가기"
-          />
-          <span>글쓰기</span>
-        </div>
-        <div class="navItem" id="myBox">
-          <img
-            class="icon On"
-            src="../../styles/assets/mybox Property 1=On.svg"
-            alt="내서랍탭"
-          />
-          <img
-            class="icon Off"
-            src="../../styles/assets/mybox Property 1=Off.svg"
-            alt="내서랍으로 가기"
-          />
-          <span>내 서랍</span>
-        </div>
-      </div>
-    </nav>
-
-    <!-- 푸터 -->
-    <footer>
-      <div class="footerWrap">
-        <div class="snsWrap">
-          <div class="snsList">
-            <img
-              src="../../styles/assets/Property 1=kakao.svg"
-              class="snsIcon"
-              alt="카카오톡"
-            />
-            <img
-              src="../../styles/assets/Property 1=facebook.svg"
-              class="snsIcon"
-              alt="페이스북"
-            />
-            <img
-              src="../../styles/assets/twiiter_x_icon_black.svg fill.svg"
-              class="snsIcon"
-              alt="X"
-            />
-          </div>
-        </div>
-        <div class="terms">
-          <div class="termsSpanWrap">
-            <span>이용약관</span>
-            <span>이전 이용약관</span>
-            <span>카카오 유료서비스 이용약관</span>
-            <span class="kakaoTerms">카카오 개인정보 처리방침</span>
-            <span>청소년 보호정책</span>
-            <span>운영정책</span>
-          </div>
-          <div class="logoWrap">
-            <img
-              src="../../styles/assets/logo Property 1=white.svg"
-              alt="logo"
-              class="footerLogo"
-            />
-          </div>
-        </div>
-      </div>
-    </footer>
-
-    <script src="./post.js"></script>
+    <script src="./writer.js"></script>
   </body>
 </html>
