@@ -88,6 +88,11 @@ function switchTab(tab) {
 
   // 탭 인디케이터 위치 조정
   updateTabIndicator();
+  
+  // 검색어 하이라이트 재적용
+  if (currentQuery) {
+    applySearchHighlight(currentQuery);
+  }
 }
 
 // 탭 인디케이터 업데이트
@@ -123,6 +128,32 @@ function showInitialScreen() {
   searchTabs.style.display = 'none';
 }
 
+// 검색어 하이라이트 함수
+function highlightSearchTerm(text, searchTerm) {
+  if (!searchTerm || searchTerm.trim() === '') {
+    return text;
+  }
+  
+  // 특수문자 이스케이프
+  const escapedTerm = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const regex = new RegExp(`(${escapedTerm})`, 'gi');
+  return text.replace(regex, '<span class="highlight">$1</span>');
+}
+
+// 작가 이름에 검색어 하이라이트 적용
+function applySearchHighlight(query) {
+  if (!query || query.trim() === '') return;
+  
+  const writerNames = document.querySelectorAll('.writer_name');
+  
+  writerNames.forEach((nameEl) => {
+    // 원본 텍스트 가져오기 (하이라이트 태그 제거)
+    // textContent는 HTML 태그를 무시하고 순수 텍스트만 반환
+    const originalText = nameEl.textContent || nameEl.innerText;
+    nameEl.innerHTML = highlightSearchTerm(originalText, query);
+  });
+}
+
 // 검색 결과 화면 표시
 function showSearchResults(query) {
   searchInitial.style.display = 'none';
@@ -150,6 +181,9 @@ function showSearchResults(query) {
       filterButtons.style.display = 'none';
       updateResultsCount('writers');
     }
+    
+    // 검색어 하이라이트 적용
+    applySearchHighlight(query);
   }
 }
 

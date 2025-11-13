@@ -34,11 +34,13 @@
   color: #000000;
   outline: none;
   font-weight: 400;
+  text-align: center;
 }
 
 .search_input::placeholder {
   color: #cccccc;
   font-weight: 400;
+  text-align: center;
 }
 
 .search_clear_btn {
@@ -333,10 +335,14 @@
 .writer_name {
   font-size: 20px;
   font-weight: 800;
-  color: #00c7ae;
+  color: #000000;
   margin: 0;
   line-height: 1.4;
   letter-spacing: -0.3px;
+}
+
+.writer_name .highlight {
+  color: #00c7ae;
 }
 
 .writer_desc {
