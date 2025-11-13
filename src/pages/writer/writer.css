@@ -1,0 +1,29 @@
+.writer_page {
+  width: 100%;
+}
+
+.profile_info {
+  background-color: #f8f8f8;
+}
+.profile_top {
+}
+.profile_details,
+.writer_stats,
+.profile_bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.profile_details {
+  padding: 10px 20px;
+}
+.writer_stats {
+  padding: 10px 20px;
+}
+.subscribe_btn {
+  padding: 10px 20px;
+}
+.profile_text {
+  margin-top: 5%;
+}
