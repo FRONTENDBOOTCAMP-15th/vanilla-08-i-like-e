@@ -160,6 +160,7 @@ h3 {
 .todayWriter {
   padding: 50px 25px;
   background-color: #fff;
+  min-width: 360px;
 }
 .profileContent h4 {
   color: #00c6be;
