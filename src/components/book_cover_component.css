@@ -1,5 +1,6 @@
 .bookCoverWrap {
   width: 80px;
+  min-width: 80px;
   height: 112px;
   background-image: url(/src/styles/assets/book_cover_background.jpg);
   background-size: cover;
