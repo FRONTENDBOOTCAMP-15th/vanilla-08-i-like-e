@@ -1,3 +1,4 @@
+/* 헤더 */
 .disconnect {
   display: block;
 }
@@ -5,20 +6,72 @@
   display: none;
 }
 
+/* 스와이퍼 - 더미데이터 */
 .swiper {
   width: 100%;
   min-width: 360px;
-  height: 488px;
+
   margin: 0 auto;
   background-size: cover;
-  background-image: url(/src/styles/assets/swiper\ dum.png);
+  /* background-image: url(/src/styles/assets/swiper\ dum.png); */
+  background:
+    linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.26) 100%),
+    #8d4e8e;
+  padding: 55px 50px;
+  text-align: center;
 }
+
+.swiperTxtCon {
+  text-align: center;
+  color: white;
+}
+
+.swiperTxtCon h3 {
+  color: white;
+  font-size: 22px;
+  font-weight: 300;
+  line-height: 31px;
+}
+
+.swiperTxtCon span {
+  color: #ddd;
+  font-weight: 400;
+  font-size: 12px;
+}
+
+.spanCon {
+  margin: 10px;
+}
+
+.swiper .bookCoverWrap {
+  width: 135px;
+  height: 190px;
+  margin: 65px auto 0 auto;
+}
+
+.swiper .bookCover {
+  min-width: 77px;
+  height: 104px;
+  top: 39px;
+  left: 29px;
+  text-align: left;
+}
+
+.cheerCount {
+  margin-top: 30px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 21px;
+}
+
+/* 요즘뜨는 브런치 */
 .todayPick {
   background-color: #fff;
   padding: 50px 14.4%;
   width: 100%;
   min-width: 360px;
-  margin: 0 auto;
+  margin: 0 auto 5px auto;
   counter-reset: num;
 }
 
@@ -72,6 +125,9 @@ h3 {
 .leftContent .by {
   color: #bbb;
   font-size: 0.8125rem;
+}
+
+.by {
   font-family: Georgia, "Times New Roman", Times, serif;
   font-style: italic;
   font-weight: 400;
@@ -100,6 +156,97 @@ h3 {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 }
+/* 오늘의 작가 */
+.todayWriter {
+  padding: 50px 25px;
+  background-color: #fff;
+  min-width: 360px;
+}
+.profileContent h4 {
+  color: #00c6be;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 14px;
+}
+
+.profileContent .writer {
+  color: #111;
+  font-size: 30px;
+  margin-top: 15px;
+  line-height: 32px;
+}
+
+.profileContent .catchphrase {
+  margin-top: 7px;
+  color: #959595;
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 18px;
+}
+
+.profileContent img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profileContent {
+  display: flex;
+  justify-content: space-between;
+}
+
+.profile {
+  margin-top: 23px;
+  display: -webkit-box;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  color: #666;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 22px;
+}
+
+.todayBook ul {
+  margin-top: 25px;
+}
+
+.bookProfile {
+  display: flex;
+  background-color: #f8f8f8;
+  padding: 20px;
+  gap: 25px;
+  margin-bottom: 5px;
+}
+
+.bookTxt .bookname {
+  color: #111;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 20px;
+  display: block;
+  margin-top: 12px;
+}
+
+.bookTxt .bookDescription {
+  /* background-color: yellow; */
+  color: #666;
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 19px;
+  margin-top: 8px;
+  display: -webkit-box;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+/* TOP 작가 */
 .todayPick hr {
   margin: 20px 0;
   border: 0.5px solid #eee;
@@ -107,7 +254,7 @@ h3 {
 
 .topWriter {
   background-color: #fff;
-  padding: 50px 14.4%;
+  padding: 50px 7%;
   width: 100%;
   min-width: 360px;
   margin: 0 auto;
@@ -185,14 +332,21 @@ h3 {
   -webkit-box-orient: vertical;
 }
 
+/* 푸터 */
 footer {
   min-width: 360px;
-  margin-bottom: 100px;
+  margin-bottom: 100px; /* 네비게이터로 인한 가려짐을... 없애고자...*/
 }
+
+/* 네비 */
 
 nav {
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
+}
+section {
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 5px;
 }
