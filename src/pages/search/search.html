@@ -19,11 +19,11 @@
               type="text"
               class="search_input"
               placeholder="검색어 입력"
-              id="searchInput"
+              id="search_input"
             />
             <button
               class="search_clear_btn"
-              id="clearBtn"
+              id="clear_btn"
               style="display: none"
             >
               <span class="clear_icon">×</span>
@@ -35,28 +35,28 @@
       <!-- 검색 결과 헤더 (검색어 입력 후 표시) -->
       <header
         class="search_result_header"
-        id="resultHeader"
+        id="result_header"
         style="display: none"
       >
         <div class="result_header_content">
-          <h1 class="search_query" id="searchQuery">꿀</h1>
-          <button class="close_btn" id="closeBtn">
+          <h1 class="search_query" id="search_query">꿀</h1>
+          <button class="close_btn" id="close_btn">
             <span class="close_icon">×</span>
           </button>
         </div>
       </header>
 
       <!-- 탭 네비게이션 -->
-      <div class="search_tabs" id="searchTabs" style="display: none">
-        <button class="tab_btn" data-tab="posts" id="tabPosts">글</button>
-        <button class="tab_btn active" data-tab="writers" id="tabWriters">
+      <div class="search_tabs" id="search_tabs" style="display: none">
+        <button class="tab_btn" data-tab="posts" id="tab_posts">글</button>
+        <button class="tab_btn active" data-tab="writers" id="tab_writers">
           작가
         </button>
         <div class="tab_indicator"></div>
       </div>
 
       <!-- 초기 화면 (검색 전) -->
-      <section class="search_initial" id="searchInitial">
+      <section class="search_initial" id="search_initial">
         <!-- 추천 작가 키워드 -->
         <div class="recommended_section">
           <h2 class="section_title">추천 작가 키워드</h2>
@@ -92,13 +92,13 @@
       </section>
 
       <!-- 검색 결과 영역 -->
-      <section class="search_results" id="searchResults" style="display: none">
+      <section class="search_results" id="search_results" style="display: none">
         <!-- 결과 헤더 (건수, 필터) -->
-        <div class="results_header" id="resultsHeader">
-          <span class="results_count" id="resultsCount"
+        <div class="results_header" id="results_header">
+          <span class="results_count" id="results_count"
             >작가 검색 결과 32건</span
           >
-          <div class="filter_buttons" id="filterButtons" style="display: none">
+          <div class="filter_buttons" id="filter_buttons" style="display: none">
             <button class="filter_btn active" data-filter="accuracy">
               <span class="filter_dot"></span>
               정확도
@@ -108,7 +108,7 @@
         </div>
 
         <!-- 작가 검색 결과 -->
-        <div class="writers_results" id="writersResults">
+        <div class="writers_results" id="writers_results">
           <div class="writer_item">
             <img
               src="./assets/profile1.svg"
@@ -185,7 +185,7 @@
         </div>
 
         <!-- 글 검색 결과 -->
-        <div class="posts_results" id="postsResults" style="display: none">
+        <div class="posts_results" id="posts_results" style="display: none">
           <article class="post_item">
             <div class="post_content">
               <h3 class="post_title">
@@ -264,7 +264,7 @@
         </div>
 
         <!-- 검색 결과 없음 -->
-        <div class="no_results" id="noResults" style="display: none">
+        <div class="no_results" id="no_results" style="display: none">
           <div class="no_results_icon">b</div>
           <p class="no_results_text">검색 결과가 없습니다.</p>
         </div>
@@ -287,7 +287,7 @@
           />
           <span>홈</span>
         </div>
-        <div class="navItem active" id="navSearch">
+        <div class="navItem active" id="nav_search">
           <img
             class="icon On"
             src="../../styles/assets/search Property 1=On.svg"
@@ -313,7 +313,7 @@
           />
           <span>글쓰기</span>
         </div>
-        <div class="navItem" id="myBox">
+        <div class="navItem" id="my_box">
           <img
             class="icon On"
             src="../../styles/assets/mybox Property 1=On.svg"
