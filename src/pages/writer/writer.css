@@ -1,0 +1,297 @@
+/* 메인 */
+.writer_page {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  background-color: #ffffff;
+  min-height: 100vh;
+  padding-bottom: 80px;
+}
+
+/* 프로필 */
+.profile_info {
+  background-color: #ffffff;
+  padding: 24px 0 20px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.profile_top {
+  width: 100%;
+}
+
+.profile_details {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0 20px;
+  margin-bottom: 20px;
+}
+
+.profile_text {
+  flex: 1;
+  margin-top: 0;
+  padding-right: 16px;
+}
+
+.writer_name {
+  display: block;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1.3;
+  margin: 0 0 6px 0;
+  color: #000000;
+  letter-spacing: -0.5px;
+}
+
+.writer_job {
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.5;
+  margin: 0;
+  color: #666666;
+}
+
+.profile_img {
+  width: 80px;
+  height: 80px;
+  min-width: 80px;
+  max-width: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.profile_bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 0 20px;
+  margin-top: 20px;
+}
+
+.profile_bottom > div:last-child {
+  display: flex;
+  align-items: center;
+  height: 80px;
+}
+
+.writer_stats {
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+}
+
+.writer_stats > div {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.writer_stats span {
+  font-size: 13px;
+  color: #999999;
+  line-height: 1.4;
+  font-weight: 400;
+}
+
+.writer_stats .stat_value {
+  font-size: 17px;
+  font-weight: 700;
+  color: #000000;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.subscribe_btn {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  height: 40px;
+  box-sizing: border-box;
+  line-height: 1;
+}
+
+.subscribe_btn.subscribed {
+  background-color: #00c7ae;
+  color: #ffffff;
+}
+
+.subscribe_btn.subscribed .checkmark {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+  display: inline-block;
+}
+
+.subscribe_btn:not(.subscribed) {
+  background-color: #f0f0f0;
+  color: #000000;
+}
+
+.subscribe_btn:hover {
+  opacity: 0.9;
+}
+
+.subscribe_btn:active {
+  transform: scale(0.98);
+}
+
+/* 굴 목록 */
+.article_list {
+  width: 100%;
+  padding: 0;
+  background-color: #ffffff;
+}
+
+.article_item {
+  padding: 28px 20px;
+  border-bottom: 1px solid #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.article_item:last-child {
+  border-bottom: none;
+}
+
+.category_link {
+  font-size: 13px;
+  color: #00c7ae;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+  margin-bottom: 2px;
+  display: inline-block;
+  line-height: 1.5;
+  font-weight: 400;
+  transition: color 0.2s ease;
+}
+
+.category_link:link {
+  color: #00c7ae;
+}
+
+.category_link:visited {
+  color: #00c7ae;
+}
+
+.category_link:hover {
+  color: #11ddc2;
+}
+
+.category_link:active {
+  color: #0eaa95;
+}
+
+.article_item .title {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.5;
+  margin: 0;
+  color: #000000;
+  margin-bottom: 2px;
+  letter-spacing: -0.3px;
+}
+
+.article_item .desc {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #666666;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 400;
+}
+
+.article_item .date {
+  font-size: 13px;
+  color: #aaaaaa;
+  margin: 10px 0 0 0;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+@media (max-width: 480px) {
+  .profile_details {
+    padding: 0 16px;
+  }
+
+  .profile_bottom {
+    padding: 0 16px;
+  }
+
+  .writer_name {
+    font-size: 28px;
+    font-weight: 500;
+  }
+
+  .writer_job {
+    font-size: 14px;
+  }
+
+  .profile_img {
+    width: 80px;
+    height: 80px;
+    min-width: 80px;
+  }
+
+  .subscribe_btn {
+    padding: 10px 16px;
+    font-size: 13px;
+    height: 38px;
+  }
+
+  .article_item {
+    padding: 24px 16px;
+  }
+
+  .article_item .title {
+    font-size: 18px;
+    font-weight: 800;
+  }
+
+  .article_item .desc {
+    font-size: 14px;
+  }
+
+  .category_link {
+    font-size: 12px;
+  }
+
+  .article_item .date {
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 768px) {
+  .writer_page {
+    max-width: 768px;
+    margin: 0 auto;
+  }
+
+  .profile_details {
+    padding: 0 24px;
+  }
+
+  .profile_bottom {
+    padding: 0 24px;
+  }
+
+  .article_item {
+    padding: 32px 24px;
+  }
+}

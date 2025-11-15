@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>발견 - I Like E</title>
+    <link rel="stylesheet" href="../../common/index.css" />
+    <link rel="stylesheet" href="../../style.css" />
+    <link rel="stylesheet" href="./post.css" />
+  </head>
+  <body>
+    <!-- 헤더 (로그인 후 버전) -->
+    <header id="variant_header">
+      <div class="wrapHeader">
+        <img src="../../styles/assets/LOGO.svg" class="logo" alt="로고" />
+
+        <div class="rightContent">
+          <img
+            src="../../styles/assets/Property 1=Notice.svg"
+            class="alert"
+            alt="알림"
+          />
+          <img
+            src="../../styles/assets/Property 1=NoticeOn.svg"
+            class="alertOn"
+            alt="새 알림"
+          />
+          <img
+            src="../../styles/assets/Property 1=Search.svg"
+            class="searchIcon"
+            alt="검색"
+          />
+          <div class="profileWarp">
+            <img
+              src="../../styles/assets/profile Rectangle 430.svg"
+              class="myProfile"
+              alt="프로필"
+            />
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- 헤더 (글쓰기 전용) -->
+    <header id="writer_header">
+      <div class="wrapHeader">
+        <button class="back_btn">
+          <svg
+            width="30"
+            height="30"
+            viewBox="0 0 30 30"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M22.9705 6L23.6775 6.707L15.546 14.839L23.6775 22.9705L22.9705 23.6775L14.839 15.546L6.707 23.6775L6 22.9705L14.132 14.839L6 6.707L6.707 6L14.839 14.132L22.9705 6Z"
+              fill="#444444"
+            />
+          </svg>
+        </button>
+        <text class="page_title">글쓰기</text>
+        <button class="next_btn">
+          <svg
+            width="30"
+            height="30"
+            viewBox="0 0 30 30"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M23.5 9.5L13.5 21L6.5 13.5" stroke="#444444" />
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- 메인 컨텐츠 영역 -->
+    <main class="writer_container">
+      <div class="title_section">
+        <input type="text" class="title_input" placeholder="제목" />
+      </div>
+      <div class="subtitle_section">
+        <input type="text" class="subtitle_input" placeholder="소제목" />
+      </div>
+      <div class="content_section">
+        <textarea
+          class="content_textarea"
+          placeholder="내용을 입력하세요"
+        ></textarea>
+      </div>
+
+      <!-- 툴바 -->
+      <div class="tool_bar">
+        <button class="tool_image">
+          <svg
+            width="40"
+            height="40"
+            viewBox="0 0 40 40"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <mask
+              id="mask0_13_1999"
+              style="mask-type: alpha"
+              maskUnits="userSpaceOnUse"
+              x="0"
+              y="0"
+              width="40"
+              height="40"
+            >
+              <rect width="40" height="40" fill="#D9D9D9" />
+            </mask>
+            <g mask="url(#mask0_13_1999)">
+              <path
+                d="M8.44034 34.1668C7.72395 34.1668 7.11034 33.9114 6.5995 33.4006C6.08867 32.8897 5.83325 32.2761 5.83325 31.5597V8.44058C5.83325 7.72419 6.08867 7.11058 6.5995 6.59975C7.11034 6.08891 7.72395 5.8335 8.44034 5.8335H31.5595C32.2759 5.8335 32.8895 6.08891 33.4003 6.59975C33.9112 7.11058 34.1666 7.72419 34.1666 8.44058V31.5597C34.1666 32.2761 33.9112 32.8897 33.4003 33.4006C32.8895 33.9114 32.2759 34.1668 31.5595 34.1668H8.44034ZM9.65575 22.0193L16.5703 15.1047L23.4399 21.9747L30.327 15.0877L32.0724 16.8335V8.44058C32.0724 8.29086 32.0244 8.16794 31.9283 8.07183C31.8321 7.97572 31.7092 7.92766 31.5595 7.92766H8.44034C8.29061 7.92766 8.1677 7.97572 8.07159 8.07183C7.97547 8.16794 7.92742 8.29086 7.92742 8.44058V20.291L9.65575 22.0193ZM8.44034 32.0727H31.5595C31.7092 32.0727 31.8321 32.0246 31.9283 31.9285C32.0244 31.8324 32.0724 31.7095 32.0724 31.5597V19.8077L30.327 18.0622L23.4399 24.9489L16.5703 18.0793L9.65575 24.9831L7.92742 23.2652V31.5597C7.92742 31.7095 7.97547 31.8324 8.07159 31.9285C8.1677 32.0246 8.29061 32.0727 8.44034 32.0727ZM7.92742 32.0727V19.8077V21.9018V7.92766V32.0727Z"
+                fill="#959595"
+              />
+            </g>
+          </svg>
+        </button>
+        <button class="tool_align">
+          <svg
+            width="40"
+            height="40"
+            viewBox="0 0 40 40"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <mask
+              id="mask0_13_2002"
+              style="mask-type: alpha"
+              maskUnits="userSpaceOnUse"
+              x="0"
+              y="0"
+              width="40"
+              height="40"
+            >
+              <rect width="40" height="40" fill="#D9D9D9" />
+            </mask>
+            <g mask="url(#mask0_13_2002)">
+              <path
+                d="M5.83325 34.1668V32.0727H34.1666V34.1668H5.83325ZM5.83325 27.6014V25.5077H24.1666V27.6014H5.83325ZM5.83325 21.0472V18.9531H34.1666V21.0472H5.83325ZM5.83325 14.4818V12.3881H24.1666V14.4818H5.83325ZM5.83325 7.92766V5.8335H34.1666V7.92766H5.83325Z"
+                fill="#959595"
+              />
+            </g>
+          </svg>
+        </button>
+        <button class="tool_keyboard">
+          <svg
+            width="40"
+            height="40"
+            viewBox="0 0 40 40"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <mask
+              id="mask0_13_2034"
+              style="mask-type: alpha"
+              maskUnits="userSpaceOnUse"
+              x="0"
+              y="0"
+              width="40"
+              height="40"
+            >
+              <rect width="40" height="40" fill="#D9D9D9" />
+            </mask>
+            <g mask="url(#mask0_13_2034)">
+              <path
+                d="M20.0001 37.3718L14.3676 31.7222H25.6497L20.0001 37.3718ZM6.77383 27.5002C6.05744 27.5002 5.44383 27.2447 4.933 26.7339C4.42216 26.2231 4.16675 25.6095 4.16675 24.8931V8.44058C4.16675 7.72419 4.42216 7.11058 4.933 6.59975C5.44383 6.08891 6.05744 5.8335 6.77383 5.8335H33.2263C33.9427 5.8335 34.5563 6.08891 35.0672 6.59975C35.578 7.11058 35.8334 7.72419 35.8334 8.44058V24.8931C35.8334 25.6095 35.578 26.2231 35.0672 26.7339C34.5563 27.2447 33.9427 27.5002 33.2263 27.5002H6.77383ZM6.77383 25.406H33.2263C33.3547 25.406 33.4723 25.3527 33.5793 25.246C33.6859 25.1391 33.7392 25.0214 33.7392 24.8931V8.44058C33.7392 8.31225 33.6859 8.19461 33.5793 8.08766C33.4723 7.981 33.3547 7.92766 33.2263 7.92766H6.77383C6.6455 7.92766 6.52786 7.981 6.42092 8.08766C6.31425 8.19461 6.26091 8.31225 6.26091 8.44058V24.8931C6.26091 25.0214 6.31425 25.1391 6.42092 25.246C6.52786 25.3527 6.6455 25.406 6.77383 25.406ZM13.6047 23.0343H26.4126V20.4918H13.6047V23.0343ZM8.46383 17.9381H11.0063V15.3956H8.46383V17.9381ZM13.6047 17.9381H16.1476V15.3956H13.6047V17.9381ZM18.7288 17.9381H21.2713V15.3956H18.7288V17.9381ZM23.8697 17.9381H26.4126V15.3956H23.8697V17.9381ZM28.9938 17.9381H31.5363V15.3956H28.9938V17.9381ZM8.46383 12.8314H11.0063V10.2885H8.46383V12.8314ZM13.6047 12.8314H16.1476V10.2885H13.6047V12.8314ZM18.7288 12.8314H21.2713V10.2885H18.7288V12.8314ZM23.8697 12.8314H26.4126V10.2885H23.8697V12.8314ZM28.9938 12.8314H31.5363V10.2885H28.9938V12.8314Z"
+                fill="#959595"
+              />
+            </g>
+          </svg>
+        </button>
+      </div>
+    </main>
+
+    <!-- 네비게이션 (하단 고정) -->
+    <nav>
+      <div class="navWrap">
+        <div class="navItem" id="home">
+          <img
+            class="icon On"
+            src="../../styles/assets/home Property 1=On.svg"
+            alt="홈"
+          />
+          <img
+            class="icon Off"
+            src="../../styles/assets/home Property 1=Off.svg"
+            alt="홈으로 가기"
+          />
+          <span>홈</span>
+        </div>
+        <div class="navItem active" id="navSearch">
+          <img
+            class="icon Off"
+            src="../../styles/assets/search Property 1=On.svg"
+            alt="발견탭"
+          />
+          <img
+            class="icon On"
+            src="../../styles/assets/search Property 1=Off.svg"
+            alt="발견 탭으로 가기"
+          />
+          <span>발견</span>
+        </div>
+        <div class="navItem" id="write">
+          <img
+            class="icon Off"
+            src="../../styles/assets/write Property 1=On.svg"
+            alt="글쓰기탭"
+          />
+          <img
+            class="icon On"
+            src="../../styles/assets/write Property 1=Off.svg"
+            alt="글쓰러 가기"
+          />
+          <span>글쓰기</span>
+        </div>
+        <div class="navItem" id="myBox">
+          <img
+            class="icon On"
+            src="../../styles/assets/mybox Property 1=On.svg"
+            alt="내서랍탭"
+          />
+          <img
+            class="icon Off"
+            src="../../styles/assets/mybox Property 1=Off.svg"
+            alt="내서랍으로 가기"
+          />
+          <span>내 서랍</span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- 푸터 -->
+    <footer>
+      <div class="footerWrap">
+        <div class="snsWrap">
+          <div class="snsList">
+            <img
+              src="../../styles/assets/Property 1=kakao.svg"
+              class="snsIcon"
+              alt="카카오톡"
+            />
+            <img
+              src="../../styles/assets/Property 1=facebook.svg"
+              class="snsIcon"
+              alt="페이스북"
+            />
+            <img
+              src="../../styles/assets/twiiter_x_icon_black.svg fill.svg"
+              class="snsIcon"
+              alt="X"
+            />
+          </div>
+        </div>
+        <div class="terms">
+          <div class="termsSpanWrap">
+            <span>이용약관</span>
+            <span>이전 이용약관</span>
+            <span>카카오 유료서비스 이용약관</span>
+            <span class="kakaoTerms">카카오 개인정보 처리방침</span>
+            <span>청소년 보호정책</span>
+            <span>운영정책</span>
+          </div>
+          <div class="logoWrap">
+            <img
+              src="../../styles/assets/logo Property 1=white.svg"
+              alt="logo"
+              class="footerLogo"
+            />
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./post.js"></script>
+  </body>
+</html>
