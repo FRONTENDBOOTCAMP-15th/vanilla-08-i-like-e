@@ -52,6 +52,7 @@ header {
 /* 네비 */
 nav {
   background-color: #fff;
+  z-index: 100;
 }
 
 .navWrap {

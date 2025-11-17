@@ -2,19 +2,21 @@
   width: 80px;
   min-width: 80px;
   height: 112px;
+  background-color: #959595;
   background-image: url(/src/styles/assets/book_cover_background.jpg);
   background-size: cover;
   position: relative;
 }
 
 .bookCover {
-  max-width: 46px;
+  width: 46px;
   height: 60px;
   background-color: #fff;
   padding: 6.75px 0 0 6px;
   position: absolute;
   top: 27px;
   left: 17px;
+  overflow: hidden;
 }
 
 .bookCover .bookname {
