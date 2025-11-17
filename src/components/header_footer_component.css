@@ -91,6 +91,10 @@ footer {
   display: flex;
 }
 
+footer a {
+  text-decoration: none;
+}
+
 .footerWrap {
   margin: 0 auto;
   justify-content: center;
