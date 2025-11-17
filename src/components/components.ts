@@ -17,7 +17,7 @@ goWrite?.addEventListener('click', () => {
 });
 
 goMybox?.addEventListener('click', () => {
-  window.location.href = '/src/pages/mybox/mybox.html';
+  window.location.href = '/src/pages/library/library.html';
 });
 
 //==로고 클릭시 이동==
@@ -45,7 +45,7 @@ clickLogin?.addEventListener('click', () => {
 
 const clickMybox = document.querySelector('.myProfile') as HTMLElement;
 clickMybox?.addEventListener('click', () => {
-  window.location.href = '/src/pages/mybox/mybox.html';
+  window.location.href = '/src/pages/library/library.html';
 });
 
 //==푸터 sns 이동==
