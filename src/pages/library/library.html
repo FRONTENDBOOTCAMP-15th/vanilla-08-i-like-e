@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>main</title>
+    <link rel="stylesheet" href="/src/common/index.css" />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <h1 class="sr-only">내 서랍</h1>
+    <header class="disconnect" id="default_header ">
+      <div class="wrapHeader">
+        <img src="/src/styles/assets/LOGO.svg" class="logo" /><img />
+
+        <div class="rightContent">
+          <img
+            src="/src/styles/assets/Property 1=Search.svg"
+            class="searchIcon"
+          />
+          <button class="login">시작하기</button>
+        </div>
+      </div>
+    </header>
+    <header class="connect" id="variant_header ">
+      <div class="wrapHeader">
+        <img src="/src/styles/assets/LOGO.svg" class="logo" /><img />
+        <div class="rightContent">
+          <img src="/src/styles/assets/Property 1=Notice.svg" class="alert" />
+          <img
+            src="/src/styles/assets/Property 1=NoticeOn.svg"
+            class="alertOn"
+          />
+          <img
+            src="/src/styles/assets/Property 1=Search.svg"
+            class="searchIcon"
+          />
+          <div class="profileWarp">
+            <img
+              src="/src/styles/assets/profile Rectangle 430.svg"
+              class="myProfile"
+            /><img />
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="libraryWrap">
+      <!-- 관심 작가 -->
+      <section class="favorite-authors">
+        <h2 class="section-title">
+          <a href="/" class="authors-list-page">
+            관심 작가
+            <img
+              src="/src/styles/assets/library Icon30px.svg"
+              alt="전체 관심 작가 목록 보기"
+              class="arrow-icon"
+            />
+          </a>
+        </h2>
+        <ul class="authors-list">
+          <li class="authors-item">
+            <a href="/src/pages/write/writer.html" class="author-link">
+              <img
+                src="/src/styles/assets/author Rectangle 428.svg"
+                alt="작가 프로필"
+                class="author-image"
+              />
+              <span class="author-name">그레이스</span>
+            </a>
+          </li>
+          <li class="authors-item">
+            <a href="/src/pages/write/writer.html" class="author-link">
+              <img
+                src="/src/styles/assets/author Rectangle 429.svg"
+                alt="작가 프로필"
+                class="author-image"
+              />
+              <span class="author-name">베이스</span>
+            </a>
+          </li>
+          <li class="authors-item">
+            <a href="/src/pages/write/writer.html" class="author-link">
+              <img
+                src="/src/styles/assets/author Rectangle 431.svg"
+                alt="작가 프로필"
+                class="author-image"
+              />
+              <span class="author-name">톰 요크</span>
+            </a>
+          </li>
+          <li class="authors-item">
+            <a href="/src/pages/write/writer.html" class="author-link">
+              <img
+                src="/src/styles/assets/profile Rectangle 430.svg"
+                alt="작가 프로필"
+                class="author-image"
+              />
+              <span class="author-name">브라우니</span>
+            </a>
+          </li>
+        </ul>
+      </section>
+      <!-- 최근 본 -->
+      <section class="recent-view">
+        <h2 class="section-title">
+          <a href="/" class="recent-view-page">
+            최근 본
+            <img
+              src="/src/styles/assets/library Icon30px.svg"
+              alt="최근 본 글 전체 보기"
+              class="arrow-icon"
+            />
+          </a>
+        </h2>
+        <ul class="recent-list">
+          <li class="recent-item">
+            <a href="/" class="post-link">
+              <img
+                src="/src/styles/assets/library bookcover.svg"
+                alt="썸네일"
+                class="recent-thumb"
+              />
+              <div class="recent-info">
+                <strong class="recent-title">강남 안에, 강북 남자</strong>
+                <span class="recent-author">by 눅눅한과자</span>
+              </div>
+            </a>
+          </li>
+          <li class="recent-item">
+            <a href="/" class="post-link">
+              <img
+                src="/src/styles/assets/library bookcover(2).svg"
+                alt="썸네일"
+                class="recent-thumb"
+              />
+              <div class="recent-info">
+                <strong class="recent-title"
+                  >서울에서 혼자 밥해먹고 사는 사람</strong
+                >
+                <span class="recent-author">by 이확위</span>
+              </div>
+            </a>
+          </li>
+          <li class="recent-item">
+            <a href="/" class="post-link">
+              <img
+                src="/src/styles/assets/library bookcover.svg"
+                alt="썸네일"
+                class="recent-thumb"
+              />
+              <div class="recent-info">
+                <strong class="recent-title">어쩌구 저쩌구 일기</strong>
+                <span class="recent-author">by 바닐라</span>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </section>
+      <!-- 관심 글 -->
+      <section class="favorite-posts">
+        <h2 class="section-title">
+          <a href="/" class="favorite-posts-page">
+            관심 글
+            <img
+              src="/src/styles/assets/library Icon30px.svg"
+              alt="관심 글 전체 보기"
+              class="arrow-icon"
+            />
+          </a>
+        </h2>
+        <ul class="favorite-posts-list">
+          <li class="favorite-posts-item">
+            <a href="/" class="post-link">
+              <img
+                src="/src/styles/assets/library bookcover.svg"
+                alt="썸네일"
+                class="favorite-thumb"
+              />
+              <div class="favorite-info">
+                <strong class="favorite-title">강남 안에, 강북 남자</strong>
+                <span class="recent-author">by 눅눅한과자</span>
+              </div>
+            </a>
+          </li>
+          <li class="favorite-item">
+            <a href="/" class="post-link">
+              <img
+                src="/src/styles/assets/library bookcover(2).svg"
+                alt="썸네일"
+                class="favorite-thumb"
+              />
+              <div class="favorite-info">
+                <strong class="favorite-title"
+                  >서울에서 혼자 밥해먹고 사는 사람</strong
+                >
+                <span class="favorite-author">by 이확위</span>
+              </div>
+            </a>
+          </li>
+          <li class="favorite-item">
+            <a href="/" class="post-link">
+              <img
+                src="/src/styles/assets/library bookcover.svg"
+                alt="썸네일"
+                class="favorite-thumb"
+              />
+              <div class="favorite-info">
+                <strong class="favorite-title">어쩌구 저쩌구 일기</strong>
+                <span class="favorite-author">by 바닐라</span>
+              </div>
+            </a>
+          </li>
+          <li class="favorite-item">
+            <a href="/" class="post-link">
+              <img
+                src="/src/styles/assets/library bookcover.svg"
+                alt="썸네일"
+                class="favorite-thumb"
+              />
+              <div class="favorite-info">
+                <strong class="favorite-title">어쩌구 저쩌구 일기</strong>
+                <span class="favorite-author">by 바닐라</span>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </section>
+      <!-- 내 브런치 -->
+      <section class="my-brunch">
+        <h2 class="section-title">
+          <a href="/" class="recent-view-page">
+            내 브런치
+            <img
+              src="/src/styles/assets/library Icon30px.svg"
+              alt="내 브런치 전체 보기"
+              class="arrow-icon"
+            />
+          </a>
+        </h2>
+
+        <ul class="my-brunch-list">
+          <li class="my-brunch-item">
+            <a href="/" class="post-link">
+              <strong class="my-brunch-post-title">D-70, 30주</strong>
+              <p class="my-brunch-post-subtitle">딸과 100일간의 기록</p>
+              <time datetime="2024-02-05" class="my-brunch-post-date"
+                >Feb 05 / 2024</time
+              >
+            </a>
+          </li>
+
+          <li class="my-brunch-item">
+            <a href="/" class="post-link">
+              <strong class="my-brunch-post-title">6 윤희 - 2</strong>
+              <p class="my-brunch-post-subtitle">낙원</p>
+              <time datetime="2024-02-05" class="my-brunch-post-date"
+                >Feb 05 / 2024</time
+              >
+            </a>
+          </li>
+
+          <li class="my-brunch-item">
+            <a href="/" class="post-link">
+              <strong class="my-brunch-post-title">6 윤희 - 23333</strong>
+              <p class="my-brunch-post-subtitle">낙원</p>
+              <time datetime="2024-02-05" class="my-brunch-post-date"
+                >Feb 05 / 2024</time
+              >
+            </a>
+          </li>
+        </ul>
+      </section>
+      <footer>
+        <div class="footerWrap">
+          <div class="snsWrap">
+            <div class="snsList">
+              <img
+                src="/src/styles/assets/Property 1=kakao.svg"
+                class="snsIcon"
+                alt="카카오톡"
+              />
+              <img
+                src="/src/styles/assets/Property 1=facebook.svg"
+                class="snsIcon"
+                alt="페이스북"
+              />
+              <img
+                src="/src/styles/assets/twiiter_x_icon_black.svg fill.svg"
+                class="snsIcon"
+                alt="X"
+              />
+            </div>
+          </div>
+          <div class="terms">
+            <div class="termsSpanWrap">
+              <span>이용약관</span>
+              <span>이전 이용약관</span>
+              <span>카카오 유료서비스 이용약관</span>
+              <span class="kakaoTerms">카카오 개인정보 처리방침</span>
+              <span>청소년 보호정책</span>
+              <span>운영정책</span>
+            </div>
+            <div class="logoWrap">
+              <img
+                src="/src/styles/assets/logo Property 1=white.svg"
+                alt="logo"
+                class="footerLogo"
+              />
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      <nav>
+        <div class="navWrap">
+          <div class="navItem active" id="home">
+            <img
+              class="icon On"
+              src="/src/styles/assets/home Property 1=On.svg"
+              alt="홈"
+            />
+            <img
+              class="icon Off"
+              src="/src/styles/assets/home Property 1=Off.svg"
+              alt="홈으로 가기"
+            />
+            <span>홈</span>
+          </div>
+          <div class="navItem" id="navSearch">
+            <img
+              class="icon On"
+              src="/src/styles/assets/search Property 1=On.svg"
+              alt="발견탭"
+            />
+            <img
+              class="icon Off"
+              src="/src/styles/assets/search Property 1=Off.svg"
+              alt="발견 탭으로 가기"
+            />
+            <span>발견</span>
+          </div>
+          <div class="navItem" id="write">
+            <img
+              class="icon On"
+              src="/src/styles/assets/write Property 1=On.svg"
+              alt="글쓰기탭"
+            />
+            <img
+              class="icon Off"
+              src="/src/styles/assets/write Property 1=Off.svg"
+              alt="글쓰러 가기"
+            />
+            <span>글쓰기</span>
+          </div>
+          <div class="navItem" id="myBox">
+            <img
+              class="icon On"
+              src="/src/styles/assets/mybox Property 1=On.svg"
+              alt="내서랍탭"
+            />
+            <img
+              class="icon Off"
+              src="/src/styles/assets/mybox Property 1=Off.svg"
+              alt="내서랍으로 가기"
+            />
+            <span>내 서랍</span>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </body>
+</html>
