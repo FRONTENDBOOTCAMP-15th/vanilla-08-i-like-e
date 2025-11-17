@@ -1,0 +1,235 @@
+/* 중앙정렬을 위한 설정 */
+body {
+  background-color: #f7f7f7;
+}
+
+.warp {
+  min-width: 360px;
+  max-width: 768px;
+  margin: 0 auto;
+}
+
+/* 헤더 */
+
+header {
+  background-color: #fff;
+}
+
+.rightContent {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.login {
+  background-color: #231f20;
+  text-decoration: none;
+  color: white;
+  border-radius: 15px;
+  padding: 5px 13px;
+}
+
+.alertOn {
+  display: none;
+}
+
+.profileWarp {
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  margin: 0 10px;
+}
+
+/* 네비 */
+nav {
+  background-color: #fff;
+}
+
+.navWrap {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 18px 0 8px 0;
+}
+
+.navItem {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.navItem .On {
+  display: none;
+}
+
+.navItem.active .On {
+  display: block;
+}
+
+.navItem.active .Off {
+  display: none;
+}
+
+.navWrap span {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 10px;
+}
+/* 푸터 */
+footer {
+  background-color: #333;
+  height: 315px;
+  display: flex;
+}
+
+.footerWrap {
+  margin: 0 auto;
+  justify-content: center;
+  align-content: center;
+  padding: 31px 37.5px;
+}
+
+.snsWrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.snsList {
+  display: flex;
+  justify-content: space-between;
+  padding: 38.5px 0 17.5px;
+  gap: 27px;
+}
+.termsSpanWrap {
+  max-width: 360px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 55px;
+  gap: 5px;
+}
+
+.termsSpanWrap span {
+  color: #959595;
+  font-size: 12px;
+}
+
+.termsSpanWrap span.kakaoTerms {
+  color: #fbfbfb;
+}
+
+.logoWrap {
+  display: flex;
+  justify-content: center;
+}
+
+/* 글쓰기 css */
+/* 헤더 */
+#writer_header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  border-bottom: 1px solid #e0e0e0;
+  height: 55px;
+  z-index: 100;
+}
+
+.back_btn,
+.next_btn {
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+/* 메인 컨테이너 */
+.writer_container {
+  min-width: 360px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 10px 0 0px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 제목 */
+.title_section {
+  padding: 20px;
+  border-bottom: 1px solid #f0f0f0;
+  caret-color: #2196f3;
+}
+
+/* 소제목 */
+.subtitle_section {
+  padding: 15px 20px;
+  border-bottom: 1px solid #f0f0f0;
+  caret-color: #2196f3;
+}
+
+/* 내용 */
+.content_section {
+  font-size: 25px;
+  padding: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  caret-color: #2196f3;
+}
+
+.title_input,
+.subtitle_input,
+.content_textarea {
+  border: none;
+  outline: none;
+  font-family: Pretendard;
+  font-weight: 400;
+  font-style: Regular;
+  letter-spacing: 0%;
+  vertical-align: middle;
+}
+.title_input {
+  font-size: 24px;
+  line-height: 26px;
+}
+
+.subtitle_input,
+.content_textarea {
+  font-size: 20px;
+  line-height: 18px;
+}
+.content_textarea {
+  min-height: 50vh;
+}
+
+/* 툴 바 */
+.tool_bar {
+  background-color: #f8f8f8;
+  padding: 20px 20px;
+  display: flex;
+  align-items: center;
+  margin-top: auto;
+  min-height: 100px;
+}
+
+.tool_image,
+.tool_align,
+.tool_keyboard {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.tool_keyboard {
+  margin-left: auto;
+}
+
+.page_title {
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 22px;
+}
