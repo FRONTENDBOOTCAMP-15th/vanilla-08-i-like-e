@@ -473,7 +473,7 @@
 }
 
 /* 네비게이션 스타일 (공통) */
-nav {
+/* nav {
   position: fixed;
   bottom: 0;
   left: 0;
@@ -522,7 +522,7 @@ nav {
   color: #000000;
   margin-top: 4px;
   line-height: 1.2;
-}
+} */
 
 /* 반응형 디자인 */
 @media (max-width: 480px) {
