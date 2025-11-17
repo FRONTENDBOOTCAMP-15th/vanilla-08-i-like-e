@@ -1,0 +1,54 @@
+.bookCoverWrap {
+  width: 80px;
+  min-width: 80px;
+  height: 112px;
+  background-image: url(/src/styles/assets/book_cover_background.jpg);
+  background-size: cover;
+  position: relative;
+}
+
+.bookCover {
+  max-width: 46px;
+  height: 60px;
+  background-color: #fff;
+  padding: 6.75px 0 0 6px;
+  position: absolute;
+  top: 27px;
+  left: 17px;
+}
+
+.bookCover .bookname {
+  max-height: 27px;
+  font-size: 7px;
+  font-weight: 300;
+  line-height: 9px;
+  word-break: keep-all;
+}
+
+.bookCover .writer {
+  /* padding: 12px 0 7px 0px; */
+  margin-top: 12px;
+  max-height: 7px;
+  font-size: 5px;
+  color: #959595;
+  font-weight: 300;
+  line-height: 7px;
+  word-break: keep-all;
+  word-wrap: break-word;
+  display: block;
+}
+
+.writerWrap {
+  width: 25px;
+  /* height: 7px; */
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  word-break: keep-all;
+  word-wrap: break-word;
+}
+
+.branchBookLogo {
+  position: absolute;
+  bottom: 0;
+}

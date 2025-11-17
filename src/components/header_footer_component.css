@@ -1,0 +1,139 @@
+/* 중앙정렬을 위한 설정 */
+body {
+  background-color: #f7f7f7;
+}
+
+.componentWarp {
+  min-width: 360px;
+  max-width: 768px;
+  margin: 0 auto;
+}
+
+/* 헤더 */
+
+header {
+  background-color: #fff;
+  min-width: 360px;
+}
+
+.wrapHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 10px 20px;
+}
+
+.rightContent {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.login {
+  background-color: #231f20;
+  text-decoration: none;
+  color: white;
+  border-radius: 15px;
+  padding: 5px 13px;
+}
+
+.alertOn {
+  display: none;
+}
+
+.profileWarp {
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  margin: 0 10px;
+}
+
+/* 네비 */
+nav {
+  background-color: #fff;
+}
+
+.navWrap {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 18px 0 8px 0;
+}
+
+.navItem {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.navItem .On {
+  display: none;
+}
+
+.navItem.active .On {
+  display: block;
+}
+
+.navItem.active .Off {
+  display: none;
+}
+
+.navWrap span {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 10px;
+}
+/* 푸터 */
+footer {
+  background-color: #333;
+  height: 315px;
+  display: flex;
+}
+
+footer a {
+  text-decoration: none;
+}
+
+.footerWrap {
+  margin: 0 auto;
+  justify-content: center;
+  align-content: center;
+  padding: 31px 37.5px;
+}
+
+.snsWrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.snsList {
+  display: flex;
+  justify-content: space-between;
+  padding: 38.5px 0 17.5px;
+  gap: 27px;
+}
+.termsSpanWrap {
+  max-width: 360px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 55px;
+  gap: 5px;
+}
+
+.termsSpanWrap span {
+  color: #959595;
+  font-size: 12px;
+}
+
+.termsSpanWrap span.kakaoTerms {
+  color: #fbfbfb;
+}
+
+.logoWrap {
+  display: flex;
+  justify-content: center;
+}
