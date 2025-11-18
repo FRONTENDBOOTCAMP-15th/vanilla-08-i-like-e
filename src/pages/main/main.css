@@ -106,12 +106,19 @@ h3 {
 
 .todayPick li::before {
   content: counter(num);
+  width: 26px;
   font-size: 20px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  /* text-align: right; */
+}
+
+.todayPick hr:last-child {
+  border-bottom: none;
 }
 
 .leftContent {
-  width: 55%;
+  max-width: 48%;
+  min-width: 55%;
 }
 
 .leftContent h4 {
