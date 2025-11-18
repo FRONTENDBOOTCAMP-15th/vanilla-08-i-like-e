@@ -1,4 +1,9 @@
-import type { ApiPost, ApiPostsResponse } from '../../types/types';
+import type {
+  ApiPost,
+  ApiPostsResponse,
+  ApiUser,
+  ApiusersResponse,
+} from '../../types/types';
 //ㄴ> 타입구분을 위해 import
 import { getAxios } from '../../utils/axios';
 //ㄴ> axios를 사용하기위해 함수를 미리 만듦 그걸 import
@@ -77,7 +82,7 @@ async function loadToodayPicks(): Promise<void> {
     const posts = res.data.item;
     //ㄴ> res.data.item >> Apipost[](우리가 정한 글들의 배열)
 
-    console.log(posts);
+    console.log(posts, 'posts');
 
     const top10 = posts
       .sort((a, b) => (b.views ?? 0) - (a.views ?? 0))
@@ -95,3 +100,46 @@ async function loadToodayPicks(): Promise<void> {
 loadToodayPicks();
 // 요즘뜨는 브런치 끝!
 /*===============================================================*/
+
+function renderTop(users: ApiUser[]): void {
+  const ul = document.querySelector('.topWriter ul') as HTMLElement;
+
+  ul.innerHTML = ' ';
+
+  users.forEach(user => {
+    const li = document.createElement('li');
+
+    li.innerHTML = `
+    <img
+              src="${user.image}"
+              class="profilePhoto"
+            />
+            <div class="writer">${user.name}</div>
+            <div class="catchphrase">${user.extra?.job ?? ''}</div>
+            <div class="profile">
+              ${user.extra?.biography ?? ''}
+            </div>
+    `;
+
+    ul.append(li);
+  });
+}
+
+async function loadTop(): Promise<void> {
+  try {
+    const res = await axios.get<ApiusersResponse>('/users');
+    const users = res.data.item;
+
+    console.log(users, 'users');
+
+    // function countBookmarks(user, targetid) {}
+
+    const user4 = users.slice(0, 4);
+
+    renderTop(user4);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+loadTop();
