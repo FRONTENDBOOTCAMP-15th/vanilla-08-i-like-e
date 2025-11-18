@@ -83,7 +83,7 @@ async function loadToodayPicks(): Promise<void> {
     const posts = res.data.item;
     //ㄴ> res.data.item >> Apipost[](우리가 정한 글들의 배열)
 
-    console.log(posts, 'posts');
+    // console.log(posts, 'posts');
 
     const top10 = posts
       .sort((a, b) => (b.views ?? 0) - (a.views ?? 0))
@@ -133,7 +133,7 @@ async function loadTop(): Promise<void> {
 
     async function getUserDetail(_id: number): Promise<ApiUser> {
       const res2 = await axios.get<ApiUserDetailRes>(`/users/${_id}`);
-      console.log(res2, '이거볼거임');
+      // console.log(res2, 'res2');
       return res2.data.item;
     }
 
@@ -155,3 +155,94 @@ async function loadTop(): Promise<void> {
 }
 
 loadTop();
+//오늘의 작가 끝!!
+//=======================================================
+
+function renderTodayAuthor(user: ApiUser, posts: ApiPost[]) {
+  const div = document.querySelector('section.todayWriter') as HTMLElement;
+
+  div.innerHTML = ''; // 초기화
+
+  // 1) 작가 프로필 박스
+  const profile = document.createElement('div');
+  profile.classList.add('profileContent');
+  profile.innerHTML = `
+    <div class="profileTxt">
+      <h4>오늘의 작가</h4>
+      <div class="writer">${user.name}</div>
+      <div class="catchphrase">${user.extra?.job ?? ''}</div>
+    </div>
+    <img src="${user.image}" alt="" />
+  `;
+  div.append(profile);
+
+  // 2) 작가 소개글 (bio)
+  const bio = document.createElement('p');
+  bio.classList.add('profile');
+  bio.textContent = user.extra?.biography ?? '소개글이 없습니다.';
+  div.append(bio);
+
+  // 3) 책 리스트 박스
+  const todayBook = document.createElement('div');
+  todayBook.classList.add('todayBook');
+
+  const ul = document.createElement('ul');
+  todayBook.append(ul);
+
+  posts.forEach(post => {
+    const li = document.createElement('li');
+    li.classList.add('bookProfile');
+
+    li.innerHTML = `
+      <div class="bookCoverWrap">
+        <div class="bookCover">
+          <p class="bookname">${post.title}</p>
+          <div class="writerWrap">
+            <p class="writer">${user.name}</p>
+          </div>
+        </div>
+        <img
+          src="/src/styles/assets/brunch_book_Image.svg"
+          class="branchBookLogo"
+          alt=""
+        />
+      </div>
+      <div class="bookTxt">
+        <p class="bookname">${post.title ?? ''}</p>
+        <p class="bookDescription">
+          ${post.content.slice(0, 60)}...
+        </p>
+      </div>
+    `;
+
+    ul.append(li);
+  });
+
+  div.append(todayBook);
+}
+
+async function loadTodayAuthor() {
+  // 1. 모든 유저 가져오기
+  const usersRes = await axios.get('/users');
+  const users = usersRes.data.item;
+  console.log(users, '유저가 가져와졌나...');
+
+  // postViews 기준으로 정렬해서 top 1 선정
+  const todayAuthor = [...users].sort(
+    (a, b) => (b.postViews ?? 0) - (a.postViews ?? 0),
+  )[0];
+
+  // 2. 작가 정보 꺼내기
+  const authorId = todayAuthor._id;
+
+  // 3. 작가가 쓴 책(post) 가져오기
+  const postsRes = await axios.get<ApiPostsResponse>(
+    `/posts/users/${authorId}`,
+  );
+  const authorPosts = postsRes.data.item;
+
+  // // 4. 화면에 렌더하기
+  renderTodayAuthor(todayAuthor, authorPosts);
+}
+
+loadTodayAuthor();
