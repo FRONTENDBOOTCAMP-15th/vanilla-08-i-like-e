@@ -35,3 +35,7 @@ export type ApiUserDetailRes = {
   ok: number;
   item: ApiUser;
 };
+export type ApiPostDetailRes = {
+  ok: number;
+  item: ApiPost;
+};

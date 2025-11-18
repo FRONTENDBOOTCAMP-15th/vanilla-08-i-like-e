@@ -12,6 +12,8 @@ import { getAxios } from '../../utils/axios';
 const axios = getAxios();
 // 위에서 만든 함수 호출을 위한 변수 담음
 
+//===================================================================
+
 function remderTodayPick(posts: ApiPost[]): void {
   //ㄴ>API에서 받아온 게시물 목록을 돌면서 html에 li 형태로 뿌려주는 함수생성
   //post는 매개 변수 이것의 타입은 APipost (types에서 타입설정해줌) 배열이라서 []붙음?
@@ -111,14 +113,18 @@ function renderTop(users: ApiUser[]): void {
     const li = document.createElement('li');
 
     li.innerHTML = `
-    <img
-              src="${user.image}"
-              class="profilePhoto"
-            />
-            <div class="writer">${user.name}</div>
-            <div class="catchphrase">${user.extra?.job ?? ''}</div>
-            <div class="profile">
-              ${user.extra?.biography ?? ''}
+            <div>
+              <a href=./src/pages/writer/writer.html?id=${user._id} ?? '익명'}>
+                <img
+                  src="${user.image}"
+                  class="profilePhoto"
+                />
+                <div class="writer">${user.name}</div>
+                <div class="catchphrase">${user.extra?.job ?? ''}</div>
+                <div class="profile">
+                  ${user.extra?.biography ?? ''}
+                </div>
+              </a>
             </div>
     `;
 
@@ -155,7 +161,7 @@ async function loadTop(): Promise<void> {
 }
 
 loadTop();
-//오늘의 작가 끝!!
+//top 작가 끝!!
 //=======================================================
 
 function renderTodayAuthor(user: ApiUser, posts: ApiPost[]) {
@@ -167,12 +173,16 @@ function renderTodayAuthor(user: ApiUser, posts: ApiPost[]) {
   const profile = document.createElement('div');
   profile.classList.add('profileContent');
   profile.innerHTML = `
-    <div class="profileTxt">
-      <h4>오늘의 작가</h4>
-      <div class="writer">${user.name}</div>
-      <div class="catchphrase">${user.extra?.job ?? ''}</div>
-    </div>
-    <img src="${user.image}" alt="" />
+  <div class="profileTxt">
+    <a href=./src/pages/writer/writer.html?id=${user._id} ?? '익명'}>
+        <h4>오늘의 작가</h4>
+        <div class="writer">${user.name}</div>
+        <div class="catchphrase">${user.extra?.job ?? ''}</div>
+    </a>
+  </div>
+  <a href=./src/pages/writer/writer.html?id=${user._id} ?? '익명'}>
+      <img src="${user.image}" alt="" />
+  </a>
   `;
   div.append(profile);
 
@@ -195,25 +205,35 @@ function renderTodayAuthor(user: ApiUser, posts: ApiPost[]) {
 
     li.innerHTML = `
       <div class="bookCoverWrap">
-        <div class="bookCover">
-          <p class="bookname">${post.title}</p>
-          <div class="writerWrap">
-            <p class="writer">${user.name}</p>
+        <a href="./src/pages/detail/detail.html?id=${post._id}">
+          <div class="bookCover" style=" z-index:2">
+            <p class="bookname">${post.title}</p>
+            <div class="writerWrap">
+              <p class="writer">${user.name}</p>
+            </div>
           </div>
+          <img
+            src="${post.image}"
+            class="bookCoverWrap"
+            alt=""
+            style="object-fit:cover; z-index:1 " onerror="this.style.display='none'"
+          />
+        </a>
+      </div>
+      <a href="./src/pages/detail/detail.html?id=${post._id}">
+        <div class="bookTxt">
+          <p class="bookname">${post.title ?? ''}</p>
+          <p class="bookDescription">
+            ${post.content.slice(0, 60)}...
+          </p>
         </div>
-        <img
-          src="/src/styles/assets/brunch_book_Image.svg"
-          class="branchBookLogo"
-          alt=""
-        />
-      </div>
-      <div class="bookTxt">
-        <p class="bookname">${post.title ?? ''}</p>
-        <p class="bookDescription">
-          ${post.content.slice(0, 60)}...
-        </p>
-      </div>
+      </a>
     `;
+
+    const swiper = document.querySelector('.swiper');
+    swiper?.addEventListener('click', () => {
+      window.location.href = `/src/pages/detail/detail.html?id=${post._id}`;
+    });
 
     ul.append(li);
   });
@@ -222,27 +242,33 @@ function renderTodayAuthor(user: ApiUser, posts: ApiPost[]) {
 }
 
 async function loadTodayAuthor() {
-  // 1. 모든 유저 가져오기
-  const usersRes = await axios.get('/users');
-  const users = usersRes.data.item;
-  console.log(users, '유저가 가져와졌나...');
+  // 1. 전체 글 가져오기
+  const postsRes = await axios.get<ApiPostsResponse>('/posts?type=brunch');
+  const posts = postsRes.data.item;
 
-  // postViews 기준으로 정렬해서 top 1 선정
-  const todayAuthor = [...users].sort(
-    (a, b) => (b.postViews ?? 0) - (a.postViews ?? 0),
-  )[0];
+  // 2. 조회수 기준 정렬
+  const sortedPosts = posts.sort((a, b) => (b.views ?? 0) - (a.views ?? 0));
 
-  // 2. 작가 정보 꺼내기
-  const authorId = todayAuthor._id;
+  // 3. 조회수 1등 글의 작가
+  const todayPost = sortedPosts[0];
+  const authorId = todayPost.user._id;
 
-  // 3. 작가가 쓴 책(post) 가져오기
-  const postsRes = await axios.get<ApiPostsResponse>(
-    `/posts/users/${authorId}`,
-  );
-  const authorPosts = postsRes.data.item;
+  // 4. 작가 정보 가져오기
+  const authorRes = await axios.get(`/users/${authorId}`);
+  const author = authorRes.data.item;
 
-  // // 4. 화면에 렌더하기
-  renderTodayAuthor(todayAuthor, authorPosts);
+  // ⭐ 5. 전체 글 중에서 "유저 아이디가 같은 글만" 필터링
+  const authorPosts = posts
+    .filter(post => post.user._id === authorId)
+    .sort((a, b) => (b.views ?? 0) - (a.views ?? 0)) // 뷰 높은 순
+    .slice(0, 2); // 상위 2개만;
+  console.log(authorPosts, '같은 작가 글들');
+
+  // 6. 렌더
+
+  renderTodayAuthor(author, authorPosts);
 }
 
 loadTodayAuthor();
+//오늘의 작가 끝@@
+//======================================
