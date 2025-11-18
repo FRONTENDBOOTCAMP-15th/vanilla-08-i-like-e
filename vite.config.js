@@ -11,7 +11,7 @@ export default defineConfig({
         'bord/main': '/src/pages/main/main.html',
         'bord/post': '/src/pages/post/post.html',
         'bord/search': '/src/pages/search/search.html',
-        'bord/writer': '/src/pages/post/post.html',
+        'bord/writer': '/src/pages/writer/writer.html',
         'bord/login': '/src/pages/login/login.html',
         'bord/signup': '/src/pages/signup/signup.html',
         'bord/library': '/src/pages/library/library.html',
