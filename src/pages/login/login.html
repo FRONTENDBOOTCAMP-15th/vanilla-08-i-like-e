@@ -3,9 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>브런치 로그인 페이지</title>
+    <title>브런치 로그인</title>
+    <link
+      rel="shortcut icon"
+      href="/public/favicon/likelion.ico"
+      type="image/x-icon"
+    />
     <link rel="stylesheet" href="/src/common/index.css" />
     <link rel="stylesheet" href="/src/pages/login/login.css" />
+    <script defer type="module" src="/src/pages/login/login.ts"></script>
   </head>
   <body>
     <main class="login">
@@ -40,7 +46,7 @@
         </div>
 
         <button type="submit" class="btn-login">로그인</button>
-        <button type="button" class="btn-signup">회원가입</button>
+        <a href="/src/pages/signup/signup.html" class="btn-signup">회원가입</a>
       </form>
     </main>
   </body>
