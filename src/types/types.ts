@@ -11,5 +11,27 @@ export type ApiPost = {
 
 export type ApiPostsResponse = {
   item: ApiPost[];
-  // page: 3;
+};
+export type ApiusersResponse = {
+  item: ApiUser[];
+};
+
+export type ApiUser = {
+  _id: number;
+  email: string;
+  name: string;
+  image?: string;
+  extra?: {
+    job: string;
+    biography: string;
+    keyword: Array<string>;
+  };
+  postViews: number;
+  posts?: number;
+  bookmarkedBy: { users: number };
+};
+
+export type ApiUserDetailRes = {
+  ok: number;
+  item: ApiUser;
 };
