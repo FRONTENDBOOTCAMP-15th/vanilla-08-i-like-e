@@ -111,35 +111,45 @@ body {
   outline-offset: 0;
   border-radius: 50px;
 }
-
 .btn-login,
-.btn-signup {
+.btn-signup,
+a.btn-login,
+a.btn-signup {
+  display: block; /* a 요소는 inline이므로 block 처리해야 버튼처럼 됨 */
   width: 100%;
   padding: 14px 0;
   font-size: 14px;
   font-weight: 300;
   border-radius: 4px;
+  text-align: center; /* 텍스트 가운데 정렬 */
+  text-decoration: none; /* 밑줄 제거 */
   cursor: pointer;
   transition: all 0.25s ease;
 }
 
-.btn-login {
+/* 로그인 버튼 */
+.btn-login,
+a.btn-login {
   background-color: #00c6be;
   color: #fff;
   border: none;
   margin-bottom: 10px;
 }
 
-.btn-login:hover {
+.btn-login:hover,
+a.btn-login:hover {
   background-color: #00b0a2;
 }
 
-.btn-signup {
+/* 회원가입 버튼 */
+.btn-signup,
+a.btn-signup {
   background-color: #fff;
   color: #00c4b3;
   border: 1px solid #00c4b3;
 }
 
-.btn-signup:hover {
+.btn-signup:hover,
+a.btn-signup:hover {
   background-color: #f5fffe;
 }
