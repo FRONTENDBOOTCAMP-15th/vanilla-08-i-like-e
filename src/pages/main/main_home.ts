@@ -2,6 +2,7 @@ import type {
   ApiPost,
   ApiPostsResponse,
   ApiUser,
+  ApiUserDetailRes,
   ApiusersResponse,
 } from '../../types/types';
 //ㄴ> 타입구분을 위해 import
@@ -130,11 +131,22 @@ async function loadTop(): Promise<void> {
     const res = await axios.get<ApiusersResponse>('/users');
     const users = res.data.item;
 
-    console.log(users, 'users');
+    async function getUserDetail(_id: number): Promise<ApiUser> {
+      const res2 = await axios.get<ApiUserDetailRes>(`/users/${_id}`);
+      console.log(res2, '이거볼거임');
+      return res2.data.item;
+    }
 
-    // function countBookmarks(user, targetid) {}
+    const userDetails = await Promise.all(users.map(u => getUserDetail(u._id)));
 
-    const user4 = users.slice(0, 4);
+    // 게시글 숫자 많은 순으로 정렬
+    userDetails.sort((a, b) => {
+      const aCount: number = a.bookmarkedBy.users;
+      const bCount = b.bookmarkedBy.users;
+      return bCount - aCount;
+    });
+
+    const user4 = userDetails.slice(0, 4);
 
     renderTop(user4);
   } catch (err) {

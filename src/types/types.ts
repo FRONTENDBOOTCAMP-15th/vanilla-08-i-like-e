@@ -11,11 +11,9 @@ export type ApiPost = {
 
 export type ApiPostsResponse = {
   item: ApiPost[];
-  // page: 3;
 };
 export type ApiusersResponse = {
   item: ApiUser[];
-  // page: 3;
 };
 
 export type ApiUser = {
@@ -28,5 +26,12 @@ export type ApiUser = {
     biography: string;
     keyword: Array<string>;
   };
-  refreshToken: string;
+  postViews: number;
+  posts?: number;
+  bookmarkedBy: { users: number };
+};
+
+export type ApiUserDetailRes = {
+  ok: number;
+  item: ApiUser;
 };
