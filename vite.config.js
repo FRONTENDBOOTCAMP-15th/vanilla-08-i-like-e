@@ -14,6 +14,7 @@ export default defineConfig({
         'bord/writer': '/src/pages/post/post.html',
         'bord/login': '/src/pages/login/login.html',
         'bord/signup': '/src/pages/signup/signup.html',
+        'bord/library': '/src/pages/library/library.html',
       },
     },
   },
