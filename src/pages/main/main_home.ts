@@ -41,7 +41,7 @@ function remderTodayPick(posts: ApiPost[]): void {
           <h4 class="bookname">${post.title}</h4>
         </a>
         <span class="by">by</span>
-        <a href=./src/pages/writer/writer.html?id=${post.user?.name ?? '익명'}><span class="writer">${post.user?.name ?? '익명'}</span></a>
+        <a href=./src/pages/writer/writer.html?id=${post.user?._id ?? '익명'}><span class="writer">${post.user?.name ?? '익명'}</span></a>
         <p>${stripHtml(post.content)}</p>
       </div>
 
