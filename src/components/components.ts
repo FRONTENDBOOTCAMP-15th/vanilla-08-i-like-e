@@ -21,20 +21,24 @@ goMybox?.addEventListener('click', () => {
 });
 
 //==로고 클릭시 이동==
-const clickLogo = document.querySelector('.logo') as HTMLElement;
+const clickLogo = document.querySelectorAll('.logo');
 const clickfooterLogo = document.querySelector('.footerLogo') as HTMLElement;
 
-clickLogo?.addEventListener('click', () => {
-  window.location.href = '/index.html';
+clickLogo.forEach(btn => {
+  btn.addEventListener('click', () => {
+    window.location.href = '/index.html';
+  });
 });
 clickfooterLogo?.addEventListener('click', () => {
   window.location.href = '/index.html';
 });
 
-const clickSearch = document.querySelector('.searchIcon');
+const clickSearch = document.querySelectorAll('.searchIcon');
 
-clickSearch?.addEventListener('click', () => {
-  window.location.href = '/src/pages/search/search.html';
+clickSearch.forEach(btn => {
+  btn.addEventListener('click', () => {
+    window.location.href = '/src/pages/search/search.html';
+  });
 });
 
 const clickLogin = document.querySelector('.login');
