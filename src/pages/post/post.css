@@ -196,13 +196,34 @@ footer {
   line-height: 26px;
 }
 
-.subtitle_input,
-.content_textarea {
+.subtitle_input {
   font-size: 20px;
   line-height: 18px;
 }
+
 .content_textarea {
+  font-size: 20px;
+  line-height: 18px;
   min-height: 50vh;
+  width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* contenteditable placeholder */
+.content_textarea:empty::before {
+  content: attr(data-placeholder);
+  color: #999;
+  pointer-events: none;
+}
+
+/* 이미지 스타일 */
+.content_textarea img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 10px 0;
+  border-radius: 8px;
 }
 
 /* 툴 바 */

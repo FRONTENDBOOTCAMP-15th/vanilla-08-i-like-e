@@ -201,6 +201,12 @@
   color: #000000;
   margin-bottom: 2px;
   letter-spacing: -0.3px;
+  text-decoration: none;
+  display: block;
+}
+
+.article_item .title:hover {
+  color: #00c7ae;
 }
 
 .article_item .desc {
