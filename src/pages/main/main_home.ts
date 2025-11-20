@@ -1,6 +1,5 @@
 import type {
   ApiPost,
-  ApiPostDetailRes,
   ApiPostsResponse,
   ApiUser,
   ApiUserDetailRes,
