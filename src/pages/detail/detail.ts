@@ -11,7 +11,7 @@ const axios = getAxios();
 const params = new URLSearchParams(window.location.search);
 const id = params.get('id');
 
-async function loadDetail() {
+async function loadDetail(): Promise<void> {
   try {
     if (!id) return alert('id 없음');
 
