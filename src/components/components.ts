@@ -81,3 +81,19 @@ if (token) {
   guestHeader.style.display = 'block';
   userHeader.style.display = 'none';
 }
+
+const stored = localStorage.getItem('user');
+if (!stored) {
+  console.log('no user in localStorage');
+} else {
+  // stored는 이제 string 타입 확정됨
+  const user = JSON.parse(stored) as { image?: string };
+
+  const headerImg = document.querySelector(
+    '.myProfile',
+  ) as HTMLImageElement | null;
+
+  if (headerImg && user.image) {
+    headerImg.src = `${user.image}`;
+  }
+}

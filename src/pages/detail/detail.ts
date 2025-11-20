@@ -18,10 +18,10 @@ async function loadDetail() {
     const res = await axios.get<ApiPostDetailRes>(`/posts/${id}`);
     const data = res.data.item;
 
-    // ❗ 게시글의 작성자 id 얻기
+    // 게시글의 작성자 id 얻기
     const userId = data.user._id;
 
-    // ❗ 이걸로 유저 상세 API 호출해야 함
+    // 유저 상세 API 호출해야 함
     const user_res = await axios.get<ApiUserDetailRes>(`/users/${userId}`);
     const user_data = user_res.data.item;
 
@@ -32,6 +32,17 @@ async function loadDetail() {
     document.querySelector('.title')!.textContent = data.title ?? '';
     document.querySelector('.subtitle')!.textContent =
       data.extra?.subTitle ?? '';
+
+    // 제목 / 부제목 위쪽에 넣기
+
+    const subjectWrap = document.querySelector('.subject_wrap') as HTMLElement;
+
+    // 게시글 대표 이미지 적용
+    if (data.image) {
+      subjectWrap.style.backgroundImage = `url(${data.image})`;
+      subjectWrap.style.backgroundSize = 'cover';
+      subjectWrap.style.backgroundPosition = 'center';
+    }
 
     // writer info
     document.querySelector('.writer')!.textContent = data.user?.name;
@@ -58,6 +69,8 @@ async function loadDetail() {
     document.querySelector('.like_number')!.textContent = data.like ?? 0;
     document.querySelector('.replies_number')!.textContent =
       data.replies.length.toString();
+
+    //===================================================
     // 상세 글 실제 데이터(수진)
     const post = res.data.item;
 

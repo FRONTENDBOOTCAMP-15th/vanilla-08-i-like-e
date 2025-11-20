@@ -1,3 +1,216 @@
-.detail_wrap {
-  margin: 0 20px;
+#wrap {
+  background-color: #f8f8f8;
+  min-width: 360px;
+}
+
+#wrap section {
+  background-color: #fff;
+}
+
+.subject_wrap {
+  height: 240px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  padding: 40px 20px;
+  color: #fff; /* 글자 가독성 높이기 */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* 글자 아래쪽 정렬하고 싶으면 */
+}
+
+/* 오버레이 */
+.subject_wrap::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  backdrop-filter: brightness(0.6) blur(3px); /* ✨ 핵심 */
+  -webkit-backdrop-filter: brightness(0.6) blur(3px); /* 사파리용 */
+  z-index: 0;
+}
+
+/* 글자 요소는 오버레이 위로 */
+.subject_wrap > * {
+  position: relative;
+  z-index: 1;
+}
+.detail_back_btn {
+  position: absolute;
+  top: 10px;
+  left: 5px;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 300;
+  line-height: 34px;
+  word-wrap: break-word;
+  margin: 0;
+}
+
+.subject_wrap .subtitle {
+  color: #cecece;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 21px;
+  word-wrap: break-word;
+  margin-bottom: 30px;
+}
+
+.subject_wrap .spanCon {
+  color: #9a9a9a;
+  margin: 0;
+}
+
+.subject_wrap .spanCon .by {
+  color: #959595;
+  font-size: 12px;
+  font-family: Pretendard;
+  font-weight: 400;
+  line-height: 19.5px;
+  word-wrap: break-word;
+}
+
+.post_con_wrap {
+  padding: 20px;
+  border-bottom: none;
+  /* word-wrap: break-word; */
+  color: #1b1b1b;
+  font-size: 17.3px;
+}
+
+.post_con_wrap p,
+.post_con_wrap span {
+  font-family: Pretendard;
+  font-weight: 300;
+  line-height: 28px;
+  text-align: left;
+}
+
+.details_witer {
+  min-height: 185px;
+  border-bottom: none;
+  margin-top: 10px;
+  /* margin-bottom: 60px; */
+  padding: 50px 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.details_witer_txt {
+  display: inline;
+}
+
+.witer_name {
+  color: #333333;
+  font-size: 22px;
+  font-family: Pretendard;
+  font-weight: 300;
+  line-height: 24px;
+  word-wrap: break-word;
+}
+
+.witer_job {
+  color: #959595;
+  font-size: 12px;
+  font-family: Pretendard;
+  font-weight: 400;
+  line-height: 18px;
+  word-wrap: break-word;
+}
+
+.witer_biography {
+  color: #959595;
+  font-size: 12px;
+  font-family: Pretendard;
+  font-weight: 400;
+  line-height: 20px;
+  min-height: 5%;
+  display: -webkit-box;
+  overflow: hidden;
+  word-wrap: break-word;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+
+  margin: 25px 0 10px 0;
+}
+
+.witer_profile {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  position: absolute;
+  right: 20px;
+  top: 50px;
+}
+
+.witer_subscribe {
+  color: #959595;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  word-wrap: break-word;
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+  text-align: center;
+}
+
+.sub_text {
+  margin: auto 0;
+  text-align: center;
+}
+
+.subscribe {
+  text-align: center;
+  background-color: #fff;
+  border-radius: 40px;
+  min-width: 65px;
+  font-size: 14px;
+  padding: 7px 10px;
+  border: 1px solid #00c6be !important;
+  color: #00c6be;
+}
+
+.subscribe:hover {
+  background-color: #00c6be;
+  color: #fff;
+}
+
+.details_nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 20px;
+  border-top: 1px solid #eeeeee;
+}
+
+.details_nav span {
+  display: inline-block;
+  text-align: center;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 24px;
+  word-wrap: break-word;
+  color: #333333;
+}
+
+.left_nav {
+  height: 21px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.share {
+  margin-left: 17%;
+}
+
+.right_nav {
+  height: 21px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
 }

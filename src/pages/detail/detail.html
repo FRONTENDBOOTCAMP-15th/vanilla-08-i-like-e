@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="/src/style.css" />
     <title>Detail</title>
   </head>
-  <body>
+  <body id="wrap">
     <header class="disconnect" id="default_header ">
       <div class="wrapHeader">
         <img src="/src/styles/assets/LOGO.svg" class="logo" /><img />
@@ -45,25 +45,27 @@
     </header>
     <div class="detail_wrap">
       <section class="subject_wrap">
-        <h2 class="title">제목 어쩌구</h2>
+        <a href="#" onclick="history.back()" class="detail_back_btn">
+          <img
+            src="/src/styles/assets/back.svg"
+            alt=""
+            class="detail_back_btn"
+          />
+        </a>
+        <h2 class="title">제목</h2>
         <h3 class="subtitle">부제목</h3>
         <div class="spanCon">
-          <!-- css를 위해서 카멜케이스를...이것만쓰기로 했습니다 -->
           <span class="by">by</span>
           <a href="/src/pages/writer/writer.html">
-            <span class="writer">강윤이</span>
+            <span class="writer">작가</span>
           </a>
-          <span class="date"></span>
+          <span>&nbsp;·&nbsp;</span>
+          <span class="date">날짜</span>
         </div>
       </section>
 
       <section class="post_con_wrap">
-        <p class="post-text">
-          그래 지난 화를 요약해 보면 생장에 도착한 나 는 도착 당일 바로 첫
-          여정을 시작하기로 마음먹 었고 추천받은 목적지인 Val carlos까지 구글맵
-          으로 걸어서 2시간 30분 거리를 확인했다. 그러 나 걸어도 걸어도 줄지
-          않는 시간과 거리에 괴로 워했었지.
-        </p>
+        <p class="post-text">내용</p>
       </section>
 
       <!-- <section class="replies_wrap">
@@ -79,25 +81,28 @@
       </section> -->
 
       <section class="details_witer">
-        <div class="details_witer_txt">
-          <span class="witer_name">Sunny</span>
-          <span class="witer_job">회사원</span>
-          <p class="witer_biography">
-            12년 차 국내 항공사 승무원의 겨울 산티아고 순례길 이야기 연재 중.
-            커피 한 잔을 벗 삼아 편하게 읽을 수 있는 글쓰기에 꽤나 진심인 편입
-            니다. 후후.
-          </p>
+        <div>
+          <a href="/src/pages/writer/writer.html" class="details_witer_txt">
+            <span class="witer_name">작가이름</span>
+            <br />
+            <span class="witer_job">직업</span>
+            <p class="witer_biography">작가소개</p>
+          </a>
+          <img
+            src="/src/styles/assets/author Rectangle 429.svg"
+            alt=""
+            class="witer_profile"
+          />
         </div>
-        <img
-          src="/src/styles/assets/author Rectangle 429.svg"
-          alt=""
-          class="witer_profile"
-        />
         <div class="witer_subscribe">
-          <span>구독자</span>
-          <span class="subscribe_number">429</span>
-          <button class="subscribe">&plus; 구독</button>
-          <button class="Subscribing">&check; 구독중</button>
+          <div class="sub_text">
+            <span>구독자</span>
+            <span class="subscribe_number">nn</span>
+          </div>
+          <div>
+            <button class="subscribe no_sub">&plus; 구독</button>
+            <button class="subscribe yes_sub">&check; 구독중</button>
+          </div>
         </div>
       </section>
 
