@@ -20,6 +20,15 @@ export function getAxios() {
     config => {
       console.log('요청 인터셉터 호출', config);
       // 요청이 전달되기 전에 필요한 공통 작업 수행
+
+      // ⭐ 로그인 토큰 자동 추가 ⭐
+      const token = localStorage.getItem('token');
+      if (token) {
+        config.headers = config.headers || {};
+        config.headers['Authorization'] = `Bearer ${token}`;
+      }
+      // ----------------------------
+
       config.params = {
         // delay: 3000,
         ...config.params, // 기존 쿼리스트링 복사
