@@ -1,5 +1,6 @@
 import type {
   ApiPost,
+  ApiPostDetailRes,
   ApiPostsResponse,
   ApiUser,
   ApiUserDetailRes,
@@ -230,11 +231,6 @@ function renderTodayAuthor(user: ApiUser, posts: ApiPost[]) {
       </a>
     `;
 
-    const swiper = document.querySelector('.swiper');
-    swiper?.addEventListener('click', () => {
-      window.location.href = `/src/pages/detail/detail.html?id=${post._id}`;
-    });
-
     ul.append(li);
   });
 
@@ -257,7 +253,7 @@ async function loadTodayAuthor() {
   const authorRes = await axios.get(`/users/${authorId}`);
   const author = authorRes.data.item;
 
-  // ⭐ 5. 전체 글 중에서 "유저 아이디가 같은 글만" 필터링
+  // 5. 전체 글 중에서 "유저 아이디가 같은 글만" 필터링
   const authorPosts = posts
     .filter(post => post.user._id === authorId)
     .sort((a, b) => (b.views ?? 0) - (a.views ?? 0)) // 뷰 높은 순
@@ -267,9 +263,51 @@ async function loadTodayAuthor() {
   // 6. 렌더
 
   renderTodayAuthor(author, authorPosts);
+  swiperRender(authorPosts[0], author);
 }
 
 loadTodayAuthor();
 //오늘의 작가 끝@@
 //====================================
-//test
+
+function swiperRender(posts: ApiPost, users: ApiUser) {
+  const swiper = document.querySelector('.swiper') as HTMLElement;
+
+  swiper.innerHTML = '';
+  //siperTxtCon
+  const txt = document.createElement('div');
+  txt.classList.add('swiperTxtCon');
+  txt.innerHTML = `
+    <a href="./src/pages/detail/detail.html?id=${posts._id}">
+      <h3 class="bookname">${posts.title}</h3>
+      <div class="spanCon">
+        <span class="by">by</span>
+        <span class="writer">${users.name}</span>
+      </div>
+    </a>
+  `;
+  swiper.append(txt);
+
+  //bookCoverWrap
+  const bookCover = document.createElement('div');
+  bookCover.classList.add('bookCoverWrap');
+  bookCover.innerHTML = `
+    <a href="./src/pages/detail/detail.html?id=${posts._id}">
+      <div class="bookCover" style=" z-index:2">
+        <p class="bookname">${posts.title}</p>
+      </div>
+       <img src="${posts.image}" class="bookCoverWrap" alt="" style="object-fit:cover; z-index:1 " onerror="this.style.display='none'";/>
+    </a>
+  `;
+  swiper.append(bookCover);
+
+  //cheerCont
+  const cheer = document.createElement('div');
+  cheer.classList.add('cheerCount');
+  cheer.innerHTML = `
+    <span>${users.bookmarkedBy.users}</span><span>명이 응원</span>
+
+    <div class="slide"></div>
+  `;
+  swiper.append(cheer);
+}
