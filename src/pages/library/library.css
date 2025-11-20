@@ -83,40 +83,82 @@ body {
   padding-left: 25px;
 }
 
+/* 카드 전체 감싸는 영역 */
 .recent-item,
-.favorite-posts-item,
 .favorite-item {
   flex: 0 0 auto;
   width: 120px;
 }
-
-.recent-thumb,
-.favorite-thumb {
-  width: 100%;
-  height: 160px;
-  object-fit: cover;
-  border-radius: 6px;
+/* 책 표지 전체 래퍼 */
+.recent-book,
+.favorite-book {
+  position: relative;
+  width: 120px;
+  height: 172px;
 }
 
+/* 표지 이미지 */
+.recent-book-cover,
+.favorite-book-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* 흰 박스 (오버레이) */
+.overlay-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  background: #ffffff;
+  width: 70px;
+  height: 92px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* 흰 박스 안 텍스트 */
+.overlay-title {
+  font-size: 10px;
+  font-weight: 400;
+  margin: 10px 10px 0;
+  color: #333;
+}
+
+.overlay-author {
+  font-size: 7px;
+  color: #666;
+  margin-top: auto;
+  margin-bottom: 10px;
+  margin-left: 7px;
+}
+
+/* ⭐⭐⭐ 책 아래 정보 텍스트 */
 .recent-info,
 .favorite-info {
-  margin-top: 6px;
+  margin-top: 14px;
+  text-align: center;
+
+  position: relative;
 }
 
+/* 제목 */
 .recent-title,
 .favorite-title {
   font-size: 12px;
   font-weight: 400;
   display: block;
-  line-height: 1.8;
-  text-align: center;
-  padding: 8px;
   margin-bottom: 4px;
+  color: #000;
 }
-
 .recent-author,
 .favorite-author {
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 250;
   text-align: center;
   display: block;
