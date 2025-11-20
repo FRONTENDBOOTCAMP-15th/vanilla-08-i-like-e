@@ -1,10 +1,4 @@
-import type {
-  ApiPost,
-  ApiPostDetailRes,
-  ApiPostsResponse,
-  ApiUserDetailRes,
-  ApiusersResponse,
-} from '../../types/types';
+import type { ApiPostDetailRes, ApiUserDetailRes } from '../../types/types';
 import { getAxios } from '../../utils/axios';
 
 const axios = getAxios();
