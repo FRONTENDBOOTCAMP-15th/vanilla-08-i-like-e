@@ -24,8 +24,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  backdrop-filter: brightness(0.6) blur(3px); /* ✨ 핵심 */
-  -webkit-backdrop-filter: brightness(0.6) blur(3px); /* 사파리용 */
+  background: rgba(0, 0, 0, 0.35); /* ← 이거만으로 충분히 예쁨 */
   z-index: 0;
 }
 
