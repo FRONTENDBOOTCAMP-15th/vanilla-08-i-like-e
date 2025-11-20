@@ -46,7 +46,9 @@ async function loadDetail(): Promise<void> {
 
     // writer info
     document.querySelector('.writer')!.textContent = data.user?.name;
-    const dateStr = new Date(data.createdAt).toISOString().slice(0, 10);
+    const created = String(data.createdAt);
+    const dateStr = created.slice(0, 10).replace(/\./g, '-');
+
     document.querySelector('.date')!.textContent = dateStr;
 
     // 본문
