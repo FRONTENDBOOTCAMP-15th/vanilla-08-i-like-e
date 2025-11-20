@@ -262,8 +262,8 @@ async function loadTodayAuthor() {
 
   // 6. 렌더
 
-  renderTodayAuthor(author, authorPosts);
   swiperRender(authorPosts[0], author);
+  renderTodayAuthor(author, authorPosts);
 }
 
 loadTodayAuthor();
