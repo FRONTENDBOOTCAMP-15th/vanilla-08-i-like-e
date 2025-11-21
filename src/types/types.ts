@@ -65,5 +65,7 @@ export type ApiBookmark = {
   user_id: number;
   memo?: string;
   createdAt: string;
-  post: ApiPost; // ⭐ 여기에서 ApiPost를 사용할고임
+
+  post?: ApiPost | null;
+  user?: ApiUser | null; // ★★ 이거 반드시 있어야 함
 };

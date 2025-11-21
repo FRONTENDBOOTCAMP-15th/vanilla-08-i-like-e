@@ -1,19 +1,23 @@
-import type { ApiBookmark, ApiPost } from '../../types/types';
+import type { ApiBookmark, ApiPost, ApiUser } from '../../types/types';
 import { getAxios } from '../../utils/axios';
 
 const axios = getAxios();
 
-const libraryRoot = document.querySelector('.libraryWrap');
+const libraryRoot = document.querySelector('.libraryWrap') as HTMLElement;
 const recentList = document.querySelector('.recent-list') as HTMLElement;
-const favoriteList = document.querySelector('.favorite-posts-list');
+const favoriteList = document.querySelector(
+  '.favorite-posts-list',
+) as HTMLElement;
+const authorList = document.querySelector('.authors-list') as HTMLElement;
 
 if (libraryRoot) {
   initRecentPosts();
   initFavoritePosts();
+  initFavoriteAuthorList();
 }
 
 /**
- * localStorage 에서 최근 본 글 불러오기
+ * 최근 본 글 불러오기 - localStorage
  */
 function initRecentPosts() {
   if (!recentList) return;
@@ -30,11 +34,8 @@ function initRecentPosts() {
 }
 
 /**
- * 최근 본 글 리스트를 화면에 출력
- *
- * @param items - 최근 본 글 데이터 배열
+ * 최근 본 글 화면에 출력
  */
-
 function renderRecentPosts(items: ApiPost[]) {
   if (!recentList) return;
 
@@ -72,7 +73,7 @@ function renderRecentPosts(items: ApiPost[]) {
 }
 
 /**
- * API로 관심 글 불러오기
+ * 관심 글 불러오기 - API
  */
 async function initFavoritePosts() {
   if (!favoriteList) return;
@@ -95,8 +96,8 @@ async function initFavoritePosts() {
 
     // ⭐ 북마크 안의 post 데이터를 바로 사용
     const posts: ApiPost[] = bookmarks
-      .map(bookmark => bookmark.post)
-      .filter(post => post);
+      .filter(bookmark => bookmark.post) // null 제거
+      .map(bookmark => bookmark.post as ApiPost); // TS에게 ApiPost 라고 확정
 
     renderFavoritePosts(posts);
   } catch (error) {
@@ -141,4 +142,59 @@ function renderFavoritePosts(items: ApiPost[]) {
     .join('');
 
   favoriteList.innerHTML = html;
+}
+
+/**
+ * 구독 작가 불러오기 - API
+ */
+async function initFavoriteAuthorList() {
+  if (!authorList) return;
+  console.log('❤️ 구독 작가 불러오기 시작');
+
+  try {
+    const res = await axios.get('/bookmarks/user');
+
+    if (res.data.ok !== 1) {
+      console.warn('💔 구독 작가 조회 실패:', res.data.message);
+      return;
+    }
+
+    const bookmarks = res.data.item as ApiBookmark[];
+
+    if (!bookmarks || bookmarks.length === 0) {
+      authorList.innerHTML = '<p>관심 작가가 없습니다.</p>';
+      return;
+    }
+
+    // 북마크 안 user 데이터를 그대로 사용
+    const authors: ApiUser[] = bookmarks
+      .filter(bookmark => bookmark.user) // null 제거
+      .map(bookmark => bookmark.user as ApiUser); // 확정
+
+    renderFavoriteAuthors(authors);
+  } catch (error) {
+    console.error('관심 작가 API 오류:', error);
+  }
+}
+
+/**
+ * 구독 작가 화면에 출력
+ */
+function renderFavoriteAuthors(authors: ApiUser[]) {
+  if (!authorList) return;
+
+  const html = authors
+    .map(
+      author => `
+      <li class="authors-item">
+        <a href="/src/pages/writer/writer.html?id=${author._id}" class="author-link">
+          <img src="${author.image}" alt="${author.name}" class="author-image" />
+          <span class="author-name">${author.name}</span>
+        </a>
+      </li>
+    `,
+    )
+    .join('');
+
+  authorList.innerHTML = html;
 }
