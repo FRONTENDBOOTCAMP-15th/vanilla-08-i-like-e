@@ -3,15 +3,14 @@ import { getAxios } from '../../utils/axios';
 
 const axios = getAxios();
 
-// 로그인 확인 후 없으면 로그인창으로 이동
+//로컬스토리지에 user로 저장된 문자열 꺼내기
 const savedUser = localStorage.getItem('user');
-if (!savedUser) {
-  window.location.href = '/src/pages/login/login.html';
-}
+//문자열을 객체로 바꾸기 JSON.parse
 const userData = savedUser ? JSON.parse(savedUser) : null;
-const userId = userData?._id;
+//객체 안에서 id만 뽑아오기. id가 없으면 null
+const userId = userData ? userData._id : null;
 
-// dom 요소
+// dom 요소 꺼내기
 const libraryRoot = document.querySelector('.libraryWrap') as HTMLElement;
 const recentList = document.querySelector('.recent-list') as HTMLElement;
 const favoriteList = document.querySelector(
@@ -20,8 +19,12 @@ const favoriteList = document.querySelector(
 const authorList = document.querySelector('.authors-list') as HTMLElement;
 const myBrunchList = document.querySelector('.my-brunch-list') as HTMLElement;
 
-//내 서랍 페이지 진입시에만 실행1
+//내 서랍 페이지일 경우에 로그인 여부 확인. 내 서랍이고 로그인되어있으면 init 실행
 if (libraryRoot) {
+  //로그인 안되어있으면 로그인페이지로 이동하기
+  if (!savedUser) {
+    window.location.href = '/src/pages/login/login.html';
+  }
   initRecentPosts();
   initFavoritePosts();
   initFavoriteAuthorList();
