@@ -238,7 +238,8 @@ h3 {
   margin-top: 12px;
 }
 
-.bookTxt .bookDescription {
+.bookTxt .bookDescription,
+.bookTxt p {
   /* background-color: yellow; */
   color: #666;
   font-size: 13px;

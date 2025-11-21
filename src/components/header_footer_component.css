@@ -49,6 +49,10 @@ header {
   margin: 0 10px;
 }
 
+.profileWarp img {
+  width: 100%;
+}
+
 /* 네비 */
 nav {
   background-color: #fff;
