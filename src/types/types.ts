@@ -59,3 +59,13 @@ export type Reply = {
   createdAt: string;
   updatedAt: string;
 };
+
+export type ApiBookmark = {
+  _id: number;
+  user_id: number;
+  memo?: string;
+  createdAt: string;
+
+  post?: ApiPost | null;
+  user?: ApiUser | null; // ★★ 이거 반드시 있어야 함
+};

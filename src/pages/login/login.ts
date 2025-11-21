@@ -35,7 +35,8 @@ form.addEventListener('submit', async e => {
 
     if (result.ok === 1) {
       alert('로그인 성공!');
-      localStorage.setItem('token', result.item.token.accessToken);
+      localStorage.setItem('accessToken', result.item.token.accessToken);
+      localStorage.setItem('refreshToken', result.item.token.refreshToken);
       localStorage.setItem('user', JSON.stringify(result.item));
       window.location.href = '/src/pages/main/main.html';
     } else {
