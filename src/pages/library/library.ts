@@ -195,9 +195,11 @@ async function initMyBrunchList() {
 
     if (res.data.ok !== 1) return;
 
-    const posts = res.data.item as ApiPost[];
+    const allPosts = res.data.item as ApiPost[];
 
-    renderMyBrunchList(posts);
+    const myPosts = allPosts.filter(post => post.user._id === userId);
+
+    renderMyBrunchList(myPosts);
   } catch (error) {
     console.error('내 브런치 API 오류:', error);
   }
