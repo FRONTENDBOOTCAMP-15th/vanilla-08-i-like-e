@@ -31,7 +31,27 @@ export type ApiUser = {
   };
   postViews: number;
   posts?: number;
-  bookmarkedBy: { users: number };
+  post: {
+    extra: { subtitle: string };
+    image: string;
+    title: string;
+    type: string;
+    user: {
+      _id: number;
+      name: string;
+      image: string;
+    };
+  };
+  bookmarkedBy: { users: number; userItems: userItems };
+};
+
+type userItems = {
+  _id: number;
+  type: string;
+  target_id: number;
+  user: ReplyUser;
+  reatedeAt: Date;
+  updateAt: Date;
 };
 
 export type ApiUserDetailRes = {
@@ -59,3 +79,46 @@ export type Reply = {
   createdAt: string;
   updatedAt: string;
 };
+
+export type BookmarkUser = {
+  _id: number;
+  user_id: number;
+  name: string;
+  email: string;
+  image: string;
+  user: { user_id: number };
+};
+
+export type BookmarkItem = {
+  _id: number;
+  type: 'post';
+  user_id: number; // 글쓴 사람
+  target_id: number; // 게시글 ID
+  user: BookmarkUser; // 북마크 한 사람
+  memo: string;
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type BookmarkResponse = {
+  ok: number;
+  item: BookmarkItem;
+};
+
+export type BookmarkResponse2 = {
+  ok: number;
+  item: BookmarkItem2;
+};
+
+export type BookmarkItem2 = [
+  {
+    _id: number;
+    type: 'post';
+    user_id: number; // 글쓴 사람
+    target_id: number; // 게시글 ID
+    user: BookmarkUser; // 북마크 한 사람
+    memo: string;
+    createdAt: string;
+    updatedAt: string;
+  },
+];
