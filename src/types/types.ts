@@ -7,6 +7,9 @@ export type ApiPost = {
   views?: number;
   user: { _id: number; name: string; image?: string };
   extra?: { subTitle: string; writer: string };
+  createdAt: Date;
+  like: string;
+  replies: Reply[];
 };
 
 export type ApiPostsResponse = {
@@ -38,4 +41,21 @@ export type ApiUserDetailRes = {
 export type ApiPostDetailRes = {
   ok: number;
   item: ApiPost;
+};
+
+export type ReplyUser = {
+  _id: number;
+  name: string;
+  email: string;
+  image: string;
+};
+
+export type Reply = {
+  _id: number;
+  user_id: number;
+  user: ReplyUser;
+  content: string;
+  like: number;
+  createdAt: string;
+  updatedAt: string;
 };

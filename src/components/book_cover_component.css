@@ -3,7 +3,7 @@
   min-width: 80px;
   height: 112px;
   background-color: #959595;
-  background-image: url(/src/styles/assets/book_cover_background.jpg);
+  /* background-image: url(/src/styles/assets/book_cover_background.jpg); */
   background-size: cover;
   position: relative;
 }

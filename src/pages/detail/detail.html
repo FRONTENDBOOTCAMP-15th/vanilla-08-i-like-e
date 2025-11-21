@@ -3,13 +3,137 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/src/style.css" />
     <title>Detail</title>
   </head>
-  <body>
-    <h2>Post Detail (JSON 출력)</h2>
-    <p>팀원분의 입원으로 부득이하게 json을 출력하기로 했습니다</p>
-    <pre id="json"></pre>
+  <body id="wrap">
+    <header class="disconnect" id="default_header ">
+      <div class="wrapHeader">
+        <img src="/src/styles/assets/LOGO.svg" class="logo" /><img />
 
-    <script type="module" src="./detail.ts"></script>
+        <div class="rightContent">
+          <img
+            src="/src/styles/assets/Property 1=Search.svg"
+            class="searchIcon"
+          />
+          <button class="login">시작하기</button>
+        </div>
+      </div>
+    </header>
+
+    <header class="connect" id="variant_header ">
+      <div class="wrapHeader">
+        <img src="/src/styles/assets/LOGO.svg" class="logo" /><img />
+        <div class="rightContent">
+          <img src="/src/styles/assets/Property 1=Notice.svg" class="alert" />
+          <img
+            src="/src/styles/assets/Property 1=NoticeOn.svg"
+            class="alertOn"
+          />
+          <img
+            src="/src/styles/assets/Property 1=Search.svg"
+            class="searchIcon"
+          />
+          <div class="profileWarp">
+            <img
+              src="/src/styles/assets/profile Rectangle 430.svg"
+              class="myProfile"
+            /><img />
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="detail_wrap">
+      <section class="subject_wrap">
+        <a href="#" onclick="history.back()" class="detail_back_btn">
+          <img
+            src="/src/styles/assets/back.svg"
+            alt=""
+            class="detail_back_btn"
+          />
+        </a>
+        <h2 class="title">제목</h2>
+        <h3 class="subtitle">부제목</h3>
+        <div class="spanCon">
+          <span class="by">by</span>
+          <a href="/src/pages/writer/writer.html">
+            <span class="writer">작가</span>
+          </a>
+          <span>&nbsp;·&nbsp;</span>
+          <span class="date">날짜</span>
+        </div>
+      </section>
+
+      <section class="post_con_wrap">
+        <p class="post-text">내용</p>
+      </section>
+
+      <!-- <section class="replies_wrap">
+        <img
+          src="/src/styles/assets/author Rectangle 428.svg"
+          alt="첫번째 댓글 작성자 프로필사진"
+        />
+        <div class="replies_txt_con">
+          <span class="replies_user">이상욱</span>
+          <span class="date"></span>
+          <p class="replies_content">무사히 마흔살이 될 수 있을 까 - 댓글1</p>
+        </div>
+      </section> -->
+
+      <section class="details_witer">
+        <div>
+          <a href="/src/pages/writer/writer.html" class="details_witer_txt">
+            <span class="witer_name">작가이름</span>
+            <br />
+            <span class="witer_job">직업</span>
+            <p class="witer_biography">작가소개</p>
+          </a>
+          <img
+            src="/src/styles/assets/author Rectangle 429.svg"
+            alt=""
+            class="witer_profile"
+          />
+        </div>
+        <div class="witer_subscribe">
+          <div class="sub_text">
+            <span>구독자</span>
+            <span class="subscribe_number">nn</span>
+          </div>
+          <div>
+            <button class="subscribe no_sub">&plus; 구독</button>
+            <button class="subscribe yes_sub">&check; 구독중</button>
+          </div>
+        </div>
+      </section>
+
+      <nav class="details_nav">
+        <div class="left_nav">
+          <img
+            src="/src/styles/assets/like_icon Property 1=Off.svg"
+            alt=""
+            class="like_icon"
+          />
+          <img
+            src="/src/styles/assets/like_icon Property 1=On.svg"
+            alt=""
+            class="like_icon"
+          />
+          <span class="like_number">11</span>
+          <img src="/src/styles/assets/share_icon.svg" alt="" class="share" />
+        </div>
+        <div class="right_nav">
+          <img
+            src="/src/styles/assets/replies.svg"
+            alt="댓글보기"
+            class="replies"
+          />
+          <span class="replies_number">3</span>
+        </div>
+      </nav>
+    </div>
+    <!-- <pre id="json"></pre> -->
+
+    <script defer type="module" src="../../main.ts"></script>
+    <script defer type="module" src="./detail.ts"></script>
   </body>
 </html>
