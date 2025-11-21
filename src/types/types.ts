@@ -59,3 +59,11 @@ export type Reply = {
   createdAt: string;
   updatedAt: string;
 };
+
+export type ApiBookmark = {
+  _id: number;
+  user_id: number;
+  memo?: string;
+  createdAt: string;
+  post: ApiPost; // ⭐ 여기에서 ApiPost를 사용할고임
+};

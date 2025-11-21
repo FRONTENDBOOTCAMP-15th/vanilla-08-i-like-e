@@ -1,38 +1,31 @@
-import type { ApiPost } from '../../types/types';
-// import { getAxios } from '../../utils/axios';
-// const axiosInstance = getAxios();
+import type { ApiBookmark, ApiPost } from '../../types/types';
+import { getAxios } from '../../utils/axios';
+
+const axios = getAxios();
 
 const libraryRoot = document.querySelector('.libraryWrap');
 const recentList = document.querySelector('.recent-list') as HTMLElement;
+const favoriteList = document.querySelector('.favorite-posts-list');
 
-if (!libraryRoot) {
-  console.log('library 페이지가 아님. library.ts 실행 ❎');
-} else {
-  initLibraryPage();
+if (libraryRoot) {
+  initRecentPosts();
+  initFavoritePosts();
 }
-
-// 내 서랍 페이지 초기화하기
-function initLibraryPage() {
-  console.log('library 페이지 감지. 최근 본 글 불러오기 시작');
-  loadRecentPostsFromLocal();
-}
-
-// dom 요소 수집하기
 
 /**
  * localStorage 에서 최근 본 글 불러오기
  */
-function loadRecentPostsFromLocal() {
-  const KEY = 'recentPosts';
-  const stored = localStorage.getItem(KEY);
+function initRecentPosts() {
+  if (!recentList) return;
+  console.log('📌 최근 본 글 불러오기 시작');
 
+  const stored = localStorage.getItem('recentPosts');
   if (!stored) {
     console.log('최근 본 글 없음');
     return;
   }
 
   const items: ApiPost[] = JSON.parse(stored);
-
   renderRecentPosts(items);
 }
 
@@ -76,4 +69,76 @@ function renderRecentPosts(items: ApiPost[]) {
   });
 
   recentList.innerHTML = result.join('');
+}
+
+/**
+ * API로 관심 글 불러오기
+ */
+async function initFavoritePosts() {
+  if (!favoriteList) return;
+  console.log('❤️ 관심 글 불러오기 시작');
+
+  try {
+    const res = await axios.get('/bookmarks/post');
+
+    if (res.data.ok !== 1) {
+      console.warn('⭐ 관심 글 조회 실패:', res.data.message);
+      return;
+    }
+
+    const bookmarks: ApiBookmark[] = res.data.item;
+
+    if (!bookmarks || bookmarks.length === 0) {
+      favoriteList.innerHTML = '<p>관심 글이 없습니다.</p>';
+      return;
+    }
+
+    // ⭐ 북마크 안의 post 데이터를 바로 사용
+    const posts: ApiPost[] = bookmarks
+      .map(bookmark => bookmark.post)
+      .filter(post => post);
+
+    renderFavoritePosts(posts);
+  } catch (error) {
+    console.error('관심 글 API 오류:', error);
+  }
+}
+
+/**
+ * 관심 글 화면에 출력
+ */
+function renderFavoritePosts(items: ApiPost[]) {
+  if (!favoriteList) return;
+
+  const html = items
+    .map(
+      post => `
+      <li class="favorite-item">
+        <a href="/src/pages/detail/detail.html?id=${post._id}" class="post-link">
+
+          <div class="favorite-book">
+            <img
+              src="${post.image}"
+              alt="${post.title}"
+              class="favorite-book-cover"
+            />
+
+            <div class="overlay-box">
+              <p class="overlay-title">${post.title}</p>
+              <p class="overlay-author">${post.user.name}</p>
+            </div>
+          </div>
+
+          <div class="favorite-info">
+            <strong class="favorite-title">${post.title}</strong>
+            <span class="favorite-author">by ${post.user.name}</span>
+          </div>
+
+        </a>
+      </li>
+    `,
+    )
+    .join('');
+
+  favoriteList.innerHTML = html;
 }
