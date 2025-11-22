@@ -3,17 +3,29 @@ import { getAxios } from '../../utils/axios';
 
 const axios = getAxios();
 
+// 로그인 확인 후 없으면 로그인창으로 이동
+const savedUser = localStorage.getItem('user');
+if (!savedUser) {
+  window.location.href = '/src/pages/login/login.html';
+}
+const userData = savedUser ? JSON.parse(savedUser) : null;
+const userId = userData?._id;
+
+// dom 요소
 const libraryRoot = document.querySelector('.libraryWrap') as HTMLElement;
 const recentList = document.querySelector('.recent-list') as HTMLElement;
 const favoriteList = document.querySelector(
   '.favorite-posts-list',
 ) as HTMLElement;
 const authorList = document.querySelector('.authors-list') as HTMLElement;
+const myBrunchList = document.querySelector('.my-brunch-list') as HTMLElement;
 
+//내 서랍 페이지 진입시에만 실행1
 if (libraryRoot) {
   initRecentPosts();
   initFavoritePosts();
   initFavoriteAuthorList();
+  initMyBrunchList();
 }
 
 /**
@@ -23,53 +35,44 @@ function initRecentPosts() {
   if (!recentList) return;
   console.log('📌 최근 본 글 불러오기 시작');
 
-  const stored = localStorage.getItem('recentPosts');
+  const stored = localStorage.getItem(`recentPosts_${userId}`);
   if (!stored) {
-    console.log('최근 본 글 없음');
+    recentList.innerHTML = '';
     return;
   }
 
-  const items: ApiPost[] = JSON.parse(stored);
+  const items: ApiPost[] = JSON.parse(stored).slice(-7);
   renderRecentPosts(items);
 }
 
 /**
  * 최근 본 글 화면에 출력
  */
+
 function renderRecentPosts(items: ApiPost[]) {
   if (!recentList) return;
 
-  const result = items.map(post => {
-    return `
+  recentList.innerHTML = items
+    .map(
+      post => `
       <li class="recent-item">
         <a href="/src/pages/detail/detail.html?id=${post._id}" class="post-link">
-          
-          <!-- 책 표지 + 흰 박스 -->
           <div class="recent-book">
-            <img
-              src="${post.image}"
-              alt="${post.title}"
-              class="recent-book-cover"
-            />
-
+            <img src="${post.image}" alt="${post.title}" class="recent-book-cover" />
             <div class="overlay-box">
               <p class="overlay-title">${post.title}</p>
               <p class="overlay-author">${post.user.name}</p>
             </div>
           </div>
-
-          <!-- 책 아래 텍스트 영역 -->
           <div class="recent-info">
             <strong class="recent-title">${post.title}</strong>
             <span class="recent-author">by ${post.user.name}</span>
           </div>
-
         </a>
       </li>
-    `;
-  });
-
-  recentList.innerHTML = result.join('');
+    `,
+    )
+    .join('');
 }
 
 /**
@@ -77,19 +80,17 @@ function renderRecentPosts(items: ApiPost[]) {
  */
 async function initFavoritePosts() {
   if (!favoriteList) return;
-  console.log('❤️ 관심 글 불러오기 시작');
+
+  console.log('🕵🏻 관심 글 불러오기 시작');
 
   try {
-    const res = await axios.get('/bookmarks/post');
+    const res = await axios.get(`/bookmarks/post`);
 
-    if (res.data.ok !== 1) {
-      console.warn('⭐ 관심 글 조회 실패:', res.data.message);
-      return;
-    }
+    if (res.data.ok !== 1) return;
 
     const bookmarks: ApiBookmark[] = res.data.item;
 
-    if (!bookmarks || bookmarks.length === 0) {
+    if (!bookmarks.length) {
       favoriteList.innerHTML = '<p>관심 글이 없습니다.</p>';
       return;
     }
@@ -109,39 +110,27 @@ async function initFavoritePosts() {
  * 관심 글 화면에 출력
  */
 function renderFavoritePosts(items: ApiPost[]) {
-  if (!favoriteList) return;
-
-  const html = items
+  favoriteList.innerHTML = items
     .map(
       post => `
       <li class="favorite-item">
         <a href="/src/pages/detail/detail.html?id=${post._id}" class="post-link">
-
           <div class="favorite-book">
-            <img
-              src="${post.image}"
-              alt="${post.title}"
-              class="favorite-book-cover"
-            />
-
+            <img src="${post.image}" alt="${post.title}" class="favorite-book-cover" />
             <div class="overlay-box">
               <p class="overlay-title">${post.title}</p>
               <p class="overlay-author">${post.user.name}</p>
             </div>
           </div>
-
           <div class="favorite-info">
             <strong class="favorite-title">${post.title}</strong>
             <span class="favorite-author">by ${post.user.name}</span>
           </div>
-
         </a>
       </li>
     `,
     )
     .join('');
-
-  favoriteList.innerHTML = html;
 }
 
 /**
@@ -152,16 +141,13 @@ async function initFavoriteAuthorList() {
   console.log('❤️ 구독 작가 불러오기 시작');
 
   try {
-    const res = await axios.get('/bookmarks/user');
+    const res = await axios.get(`/bookmarks/user`);
 
-    if (res.data.ok !== 1) {
-      console.warn('💔 구독 작가 조회 실패:', res.data.message);
-      return;
-    }
+    if (res.data.ok !== 1) return;
 
     const bookmarks = res.data.item as ApiBookmark[];
 
-    if (!bookmarks || bookmarks.length === 0) {
+    if (!bookmarks.length) {
       authorList.innerHTML = '<p>관심 작가가 없습니다.</p>';
       return;
     }
@@ -181,9 +167,7 @@ async function initFavoriteAuthorList() {
  * 구독 작가 화면에 출력
  */
 function renderFavoriteAuthors(authors: ApiUser[]) {
-  if (!authorList) return;
-
-  const html = authors
+  authorList.innerHTML = authors
     .map(
       author => `
       <li class="authors-item">
@@ -195,6 +179,53 @@ function renderFavoriteAuthors(authors: ApiUser[]) {
     `,
     )
     .join('');
+}
 
-  authorList.innerHTML = html;
+/**
+ * 내 브런치 - 로그인 되어있는 유저 꺼내기 -localStorage
+ */
+async function initMyBrunchList() {
+  if (!myBrunchList) return;
+  console.log('📙 내 브런치 불러오기 시작');
+
+  try {
+    const res = await axios.get(`/posts`, {
+      params: { _id: userId },
+    });
+
+    if (res.data.ok !== 1) return;
+
+    const allPosts = res.data.item as ApiPost[];
+
+    const myPosts = allPosts.filter(post => post.user._id === userId);
+
+    renderMyBrunchList(myPosts);
+  } catch (error) {
+    console.error('내 브런치 API 오류:', error);
+  }
+}
+
+/**
+ * 내 브런치 화면에 출력
+ */
+function renderMyBrunchList(posts: ApiPost[]) {
+  myBrunchList.innerHTML = posts
+    .map(
+      post => `
+      <li class="my-brunch-item">
+        <a href="/src/pages/detail/detail.html?id=${post._id}" class="post-link">
+          <strong class="my-brunch-post-title">${post.title}</strong>
+          <p class="my-brunch-post-subtitle">${post.extra?.subTitle || ''}</p>
+          <time datetime="${post.createdAt}" class="my-brunch-post-date">
+            ${new Date(post.createdAt).toLocaleDateString('en-US', {
+              month: 'short',
+              day: '2-digit',
+              year: 'numeric',
+            })}
+          </time>
+        </a>
+      </li>
+    `,
+    )
+    .join('');
 }

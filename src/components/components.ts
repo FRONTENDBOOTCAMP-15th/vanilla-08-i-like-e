@@ -72,7 +72,7 @@ clickX?.addEventListener('click', () => {
 const guestHeader = document.querySelector('.disconnect') as HTMLElement;
 const userHeader = document.querySelector('.connect') as HTMLElement;
 
-const token = localStorage.getItem('token'); // 로그인 상태 저장 값...
+const token = localStorage.getItem('accessToken'); // 로그인 상태 저장 값...
 
 if (token) {
   guestHeader.style.display = 'none';
