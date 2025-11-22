@@ -94,24 +94,30 @@ loadDetail();
  */
 function saveRecentView(post: ApiPost) {
   try {
-    const KEY = 'recentPosts';
+    // 로그인한 유저 ID
+    const savedUser = localStorage.getItem('user');
+    if (!savedUser) return; // 로그인 안 한 경우 저장 X
 
-    // 1) 기존 localStorage 데이터 가져오기
+    const userData = JSON.parse(savedUser);
+    const currentUserId = userData._id;
+
+    // 유저별 recentPosts key
+    const KEY = `recentPosts_${currentUserId}`;
+
+    // 기존 데이터 가져오기
     const stored = localStorage.getItem(KEY);
-
-    // 2) 타입을 명확하게! ApiPost[] 배열로 파싱
     const list: ApiPost[] = stored ? JSON.parse(stored) : [];
 
-    // 3) 같은 글(_id) 제거 → 중복 방지
+    // 중복 제거
     const filtered = list.filter(item => item._id !== post._id);
 
-    // 4) 최신 글을 맨 앞에 추가
+    // 최신 글 맨 앞에 추가
     filtered.unshift(post);
 
-    // 5) 최대 10개만 유지해서 다시 저장
+    // 최대 10개까지만 유지
     localStorage.setItem(KEY, JSON.stringify(filtered.slice(0, 10)));
 
-    console.log('최근 본 글 저장 완료:', filtered.slice(0, 10));
+    console.log(`최근 본 글 저장 완료(${currentUserId}):`, filtered);
   } catch (err) {
     console.error('최근 본 글 저장 오류:', err);
   }
