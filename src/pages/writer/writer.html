@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../../style.css" />
     <link rel="stylesheet" href="./writer.css" />
     <script defer type="module" src="/src/main.ts"></script>
+    <script defer type="module" src="/src/pages/writer/writer.ts"></script>
   </head>
   <body>
     <header class="disconnect" id="default_header">
@@ -61,8 +62,8 @@
         <div class="profile_top">
           <div class="profile_details">
             <div class="profile_text">
-              <span class="writer_name">AB</span>
-              <p class="writer_job">기획자</p>
+              <span class="writer_name"></span>
+              <p class="writer_job"></p>
             </div>
             <img
               src="./assets/image.svg"
@@ -74,17 +75,16 @@
             <div class="writer_stats">
               <div>
                 <span>구독자 </span>
-                <span class="stat_value">30</span>
+                <span class="stat_value">0</span>
               </div>
               <div>
                 <span>관심작가</span>
-                <span class="stat_value">16</span>
+                <span class="stat_value">0</span>
               </div>
             </div>
             <div>
-              <button class="subscribe_btn subscribed">
-                <span class="checkmark">✓</span>
-                구독중
+              <button class="subscribe_btn">
+                구독
               </button>
             </div>
           </div>
@@ -93,43 +93,11 @@
 
       <!-- 글 목록 -->
       <section class="article_list">
-        <article class="article_item">
-          <a href="/category/first-time" class="category_link"
-            >취준은 처음이라</a
-          >
-          <a href="../detail/detail.html" class="title">[취업특강] 노션 포트폴리오 만들기</a>
-          <p class="desc">
-            with 노슈니, 슈크림 마을, 마포청년나루 | 취업 준비를 위해 반드시
-            필요한 것 세 가지. 자기소개서, 이력서, 포트폴리오. 그중에서 최...
-          </p>
-          <p class="date">댓글0 · Jul 02. 2024</p>
-        </article>
-
-        <article class="article_item">
-          <a href="/category/first-time" class="category_link"
-            >취준은 처음이라</a
-          >
-          <a href="../detail/detail.html" class="title">[취업특강] 노션 포트폴리오 만들기</a>
-          <p class="desc">
-            with 노슈니, 슈크림 마을, 마포청년나루 | 취업 준비를 위해 반드시
-            필요한 것 세 가지. 자기소개서, 이력서, 포트폴리오. 그중에서 최...
-          </p>
-          <p class="date">댓글0 · Jul 02. 2024</p>
-        </article>
-        <article class="article_item">
-          <a href="/category/first-time" class="category_link"
-            >취준은 처음이라</a
-          >
-          <a href="../detail/detail.html" class="title">[취업특강] 노션 포트폴리오 만들기</a>
-          <p class="desc">
-            with 노슈니, 슈크림 마을, 마포청년나루 | 취업 준비를 위해 반드시
-            필요한 것 세 가지. 자기소개서, 이력서, 포트폴리오. 그중에서 최...
-          </p>
-          <p class="date">댓글0 · Jul 02. 2024</p>
-        </article>
+        <!-- 게시글 목록은 JavaScript에서 동적으로 생성됩니다 -->
       </section>
     </main>
 
-    <script src="./writer.js"></script>
+    <!-- <script src="./writer.js"></script> -->
+    <script type="module" src="./writer.ts"></script>
   </body>
 </html>
