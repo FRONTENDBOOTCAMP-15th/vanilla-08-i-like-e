@@ -118,6 +118,11 @@
   height: 40px;
   box-sizing: border-box;
   line-height: 1;
+  min-width: 90px;
+  width: 90px;
+  text-align: center;
+  background-color: #f0f0f0;
+  color: #000000;
 }
 
 .subscribe_btn.subscribed {
@@ -132,17 +137,17 @@
   display: inline-block;
 }
 
-.subscribe_btn:not(.subscribed) {
-  background-color: #f0f0f0;
-  color: #000000;
+.subscribe_btn:not(.subscribed) .checkmark {
+  display: none;
 }
 
 .subscribe_btn:hover {
   opacity: 0.9;
+  transform: translateY(-1px);
 }
 
 .subscribe_btn:active {
-  transform: scale(0.98);
+  transform: translateY(0) scale(0.98);
 }
 
 /* 굴 목록 */
@@ -174,23 +179,6 @@
   display: inline-block;
   line-height: 1.5;
   font-weight: 400;
-  transition: color 0.2s ease;
-}
-
-.category_link:link {
-  color: #00c7ae;
-}
-
-.category_link:visited {
-  color: #00c7ae;
-}
-
-.category_link:hover {
-  color: #11ddc2;
-}
-
-.category_link:active {
-  color: #0eaa95;
 }
 
 .article_item .title {

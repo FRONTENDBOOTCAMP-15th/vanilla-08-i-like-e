@@ -6,6 +6,9 @@ const form = document.querySelector('.login-form') as HTMLFormElement;
 const emailInput = document.querySelector('#email') as HTMLInputElement;
 const pwInput = document.querySelector('#password') as HTMLInputElement;
 
+emailInput.value = 'w2@market.com';
+pwInput.value = '11111111';
+
 form.addEventListener('submit', async e => {
   e.preventDefault();
 
@@ -35,9 +38,10 @@ form.addEventListener('submit', async e => {
 
     if (result.ok === 1) {
       alert('로그인 성공!');
-      localStorage.setItem('token', result.item.token.accessToken);
+      localStorage.setItem('accessToken', result.item.token.accessToken);
+      localStorage.setItem('refreshToken', result.item.token.refreshToken);
       localStorage.setItem('user', JSON.stringify(result.item));
-      window.location.href = '/src/pages/main/main.html';
+      window.location.href = '/';
     } else {
       alert(result.message);
     }
