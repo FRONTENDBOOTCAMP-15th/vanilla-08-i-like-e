@@ -333,10 +333,11 @@ function renderPostList(posts: WriterApiPost[]): void {
     const titleLink = document.createElement('a');
     // API 응답의 _id를 직접 사용 (표준 패턴)
     // href 링크가 이동할 주소
-    // `../detail/detail.html?id=${post._id}`:
-    // 상대 경로로 detail.html로 이동하고, ?id= 뒤에 게시글 ID를 붙임
-    // 예: "../detail/detail.html?id=123"
-    titleLink.href = `../detail/detail.html?id=${post._id}`;
+    // 빌드 후 경로 구조에 맞게 절대 경로 사용
+    // vite.config.js에서 'bord/detail'로 설정되어 있으므로 /bord/detail.html 사용
+    // 개발 환경과 빌드 환경 모두에서 작동하도록 절대 경로 사용
+    // 예: "/bord/detail.html?id=123"
+    titleLink.href = `/bord/detail.html?id=${post._id}`;
     titleLink.className = 'title';
     titleLink.textContent = post.title;
     articleItem.appendChild(titleLink);
