@@ -15,8 +15,10 @@ async function getSearchDataApi(): Promise<SearchApiResponse | null> {
     // axios.get()으로 서버에서 데이터 가져오기
     // <SearchApiResponse> : 가져올 데이터의 타입 지정
     // await : 데이터를 가져올 때까지 기다림
+    // 빌드 후에도 작동하도록 localhost URL 제거하고 상대 경로 사용
+    // 개발 환경과 빌드 환경 모두에서 작동하도록 절대 경로 사용
     const response = await axios.get<SearchApiResponse>(
-      `http://localhost:5173/api/dbinit/readonly-brunch/data.json`,
+      `/api/dbinit/readonly-brunch/data.json`,
     );
     // response.data에 실제 데이터가 들어있음
     return response.data;
