@@ -11,7 +11,7 @@ const axios = getAxios();
 const params = new URLSearchParams(window.location.search);
 const id = params.get('id');
 
-async function loadDetail(): Promise<void> {
+export async function loadDetail(): Promise<void> {
   try {
     if (!id) return alert('id 없음');
 
@@ -68,7 +68,8 @@ async function loadDetail(): Promise<void> {
       data.user?.image ?? '';
 
     // 좋아요 / 댓글수
-    document.querySelector('.like_number')!.textContent = data.like ?? 0;
+    document.querySelector('.like_number')!.textContent =
+      String(user_data.bookmarkedBy.users) ?? 0;
     document.querySelector('.replies_number')!.textContent =
       data.replies.length.toString();
 
@@ -82,6 +83,8 @@ async function loadDetail(): Promise<void> {
     // // JSON 예쁘게 출력
     // const prettyJson = JSON.stringify(res.data, null, 2);
     // document.querySelector('#json')!.textContent = prettyJson;
+
+    //===========================
   } catch (err) {
     console.error(err);
   }
@@ -122,3 +125,5 @@ function saveRecentView(post: ApiPost) {
     console.error('최근 본 글 저장 오류:', err);
   }
 }
+
+import './detail_bookmark_subscribe';

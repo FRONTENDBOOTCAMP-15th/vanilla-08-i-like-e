@@ -38,7 +38,7 @@ form.addEventListener('submit', async e => {
       localStorage.setItem('accessToken', result.item.token.accessToken);
       localStorage.setItem('refreshToken', result.item.token.refreshToken);
       localStorage.setItem('user', JSON.stringify(result.item));
-      window.location.href = '/src/pages/main/main.html';
+      window.location.href = '/';
     } else {
       alert(result.message);
     }
