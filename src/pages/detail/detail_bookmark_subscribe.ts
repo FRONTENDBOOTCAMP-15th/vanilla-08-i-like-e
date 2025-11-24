@@ -1,8 +1,8 @@
 import type {
   ApiPostDetailRes,
-  ApiPostsResponse,
-  ApiUserDetailRes,
-  ApiusersResponse,
+  // ApiPostsResponse,
+  // ApiUserDetailRes,
+  // ApiusersResponse,
   BookmarkListResponse,
   BookmarkListResponse2,
 } from '../../types/types';
@@ -18,8 +18,8 @@ if (!userString) {
   throw new Error('로그인 정보 없음');
 }
 
-const userData = JSON.parse(userString);
-const loginUserId: number = userData._id; // 로그인한 내 아이디
+// const userData = JSON.parse(userString);
+// const loginUserId: number = userData._id; // 로그인한 내 아이디
 
 const yesSubBtn = document.querySelector<HTMLElement>(
   '.yes_sub',
