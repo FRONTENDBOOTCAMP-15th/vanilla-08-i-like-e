@@ -1,6 +1,8 @@
 import type {
   ApiPostDetailRes,
+  ApiPostsResponse,
   ApiUserDetailRes,
+  ApiusersResponse,
   BookmarkListResponse,
   BookmarkListResponse2,
 } from '../../types/types';
@@ -19,136 +21,171 @@ if (!userString) {
 const userData = JSON.parse(userString);
 const loginUserId: number = userData._id; // 로그인한 내 아이디
 
-// const res = await axios.get<ApiPostDetailRes>(`/posts/${id}`);
-// /* ---------------------------------------------------------
-//   1. 좋아요 상태 체크
-// --------------------------------------------------------- */
-async function loadBookmarkPost() {
-  try {
-    const bookmark_post_get = (await axios.get)<BookmarkListResponse>(
-      `/bookmarks/post`,
-    );
-    const bookmark_post_data = (await bookmark_post_get).data.item;
+const yesSubBtn = document.querySelector<HTMLElement>(
+  '.yes_sub',
+) as HTMLElement;
+const noSubBtn = document.querySelector<HTMLElement>('.no_sub') as HTMLElement;
 
-    console.log(bookmark_post_data, '북마크 데이터가 잘 들어왔을까');
+const likeOff = document.getElementById('like_off') as HTMLElement;
+const likeOn = document.getElementById('like_on') as HTMLElement;
+
+const post_get = await axios.get<ApiPostDetailRes>(`/posts/${page_id}`); // 이글의 상세정보. 왜 들고 오려하냐? 글쓴이 아이디 알라고
+const bookmark_post_data = post_get.data.item;
+
+console.log(bookmark_post_data.user._id, '작성자 다시나오는지 확인띠');
+// 이걸로는 이글의 작성자가 누군지 알라고
+// ------------------------------------------
+
+const bookmark_post_get =
+  await axios.get<BookmarkListResponse>(`/bookmarks/post`); // 유저가 북마크 한 데이터를 들고옴
+const my_bookmark_post_data_id = await bookmark_post_get.data.item._id;
+
+console.log(my_bookmark_post_data_id, '로그인한 유저의 게시글북마크');
+
+// ---------------------
+
+const bookmark_user_get =
+  await axios.get<BookmarkListResponse>(`/bookmarks/user`); // 유저가 북마크 한 데이터를 들고옴
+const my_bookmark_user_data_id = await bookmark_user_get.data.item._id;
+
+console.log(my_bookmark_user_data_id, '로그인한 유저의 구독자 북마크');
+// ---------------------
+
+// /* ---------------------------------------------------------
+//   1. 좋아요, 구독 상태 체크
+// --------------------------------------------------------- */
+async function loadBookmarkcheck() {
+  try {
+    const bookmark_post_get =
+      await axios.get<BookmarkListResponse2>(`/bookmarks/post`); // 유저가 북마크 한 데이터를 들고옴
+    const my_bookmark_post_data = await bookmark_post_get.data.item;
+
+    console.log(my_bookmark_post_data, '로그인한 유저의 게시글북마크');
+
+    const bookmark_user_get =
+      await axios.get<BookmarkListResponse2>(`/bookmarks/user`); // 유저가 북마크 한 데이터를 들고옴
+    const my_bookmark_user_data = await bookmark_user_get.data.item;
+
+    console.log(my_bookmark_user_data, '로그인한 유저의 구독자 북마크');
+
+    const isMyPostBookmarked = my_bookmark_post_data.some(
+      v => String(v.target_id) === String(page_id),
+    );
+    const isMyuserBookmarked = my_bookmark_post_data.some(
+      v => String(v.target_id) === String(page_id),
+    );
+
+    if (isMyPostBookmarked) {
+      console.log('이 게시글 북마크함');
+      likeOff.style.display = 'none';
+      likeOn.style.display = 'block';
+    } else {
+      console.log('이 게시글 북마크 안함');
+      likeOff.style.display = 'block';
+      likeOn.style.display = 'none';
+    }
+
+    if (isMyuserBookmarked) {
+      console.log('이 작성자 북마크함');
+      noSubBtn.style.display = 'none';
+      yesSubBtn.style.display = 'block';
+    } else {
+      console.log('이 작성자 북마크 안함');
+      noSubBtn.style.display = 'block';
+      yesSubBtn.style.display = 'none';
+    }
   } catch (err) {
     console.log(err);
   }
 }
 
-loadBookmarkPost();
-
-// async function checkLike() {
-//   try {
-//     const res = await axios.get<BookmarkListResponse>(`/bookmarks/post`);
-
-//     const data = res.data.item;
-//     console.log(data, 'data 확인');
-
-//     if (loginUserId === data?.user_id) {
-//       const likeOff = document.getElementById('like_off');
-//       if (likeOff) likeOff.style.display = 'none';
-//     } else {
-//       const likeOn = document.getElementById('like_on');
-//       if (likeOn) likeOn.style.display = 'none';
-//     }
-//   } catch (err) {
-//     console.log(err);
-//   }
-// }
-// checkLike();
 // /* ---------------------------------------------------------
-// 2. 구독 상태 체크 (구독 여부에 따라 버튼 노출 조절)
+//   2. 게시글 좋아요 하기
 // --------------------------------------------------------- */
+async function likePost() {
+  try {
+    await axios.post(`/bookmarks/post`, {
+      target_id: `${page_id}`,
+    });
 
-// // async function checkSub() {
-// //   try {
-// //     const bookmark_res =
-// //       await axios.get<BookmarkListResponse2>(`/bookmarks/user/`);
-// //     const list = bookmark_res.data.item; // 배열
-// //     const bookmark = list.some(v => v.user_id === loginUserId); // 북마크
-// //     const user_res = await axios.get<ApiUserDetailRes>(`/users/${loginUserId}`); // 글쓴사람
-// //     console.log(bookmark, '나와 임마');
-// //     console.log(user_res.data.item, '나와임마');
-// //     if (bookmark) {
-// //       const likebtn = document.querySelector('.no_sub') as HTMLElement;
-// //       likebtn.style.display = 'none';
-// //     } else {
-// //       const likebtn = document.querySelector('.yes_sub') as HTMLElement;
-// //       likebtn.style.display = 'none';
-// //     }
-// //   } catch (err) {
-// //     console.log(err);
-// //   }
-// // }
-// // checkSub();
-// /* ---------------------------------------------------------
-//   3. 구독 취소 (DELETE)
-// --------------------------------------------------------- */
-// // async function handleUnsubscribe() {
-// //   try {
-// //     await axios.delete(`/bookmarks/post/${target_Id}`, {
-// //       data: { target_id: `${target_Id}` },
-// //     });
-
-// //     alert('구독취소 완료!');
-
-// //     const yesSubBtn = document.querySelector<HTMLElement>('.yes_sub');
-// //     const noSubBtn = document.querySelector<HTMLElement>('.no_sub');
-
-// //     if (yesSubBtn && noSubBtn) {
-// //       yesSubBtn.style.display = 'none';
-// //       noSubBtn.style.display = 'block';
-// //     }
-// //   } catch (err) {
-// //     console.log(err);
-// //   }
-// // }
+    console.log('구독 완료!');
+  } catch (err) {
+    console.log(err);
+  }
+}
 
 // /* ---------------------------------------------------------
-//   4. 구독하기 (POST)
+//   2. 작성자 구독 하기
 // --------------------------------------------------------- */
-// // async function subscribe() {
-// //   try {
-// //     await axios.post(`/bookmarks/post`, {
-// //       target_id: `${target_Id}`,
-// //     });
+async function subscribe() {
+  try {
+    await axios.post(`/bookmarks/post`, {
+      target_id: `${page_id}`,
+    });
 
-// //     console.log('구독 완료!');
-
-// //     const yesSubBtn = document.querySelector<HTMLElement>('.yes_sub');
-// //     const noSubBtn = document.querySelector<HTMLElement>('.no_sub');
-
-// //     if (yesSubBtn && noSubBtn) {
-// //       noSubBtn.style.display = 'none';
-// //       yesSubBtn.style.display = 'block';
-// //     }
-// //   } catch (err) {
-// //     console.log(err);
-// //   }
-// // }
+    console.log('구독 완료!');
+  } catch (err) {
+    console.log(err);
+  }
+}
 
 // /* ---------------------------------------------------------
-//   5. 초기 실행 + 이벤트 바인딩 (top-level await 안 쓰고 정리)
+//   3. 구독 취소하기
 // --------------------------------------------------------- */
-// // async function init() {
-// //   await checkLike();
-// //   await checkSub();
+async function DeleteSub() {
+  try {
+    await axios.delete(`/bookmarks/user`, {
+      data: { target_id: `${my_bookmark_user_data_id}` },
+    });
+    console.log('삭제 완료!');
+  } catch (err) {
+    console.log(err);
+  }
+}
 
-// //   const noBtn = document.querySelector<HTMLButtonElement>('.no_sub');
-// //   const yesBtn = document.querySelector<HTMLButtonElement>('.yes_sub');
+// /* ---------------------------------------------------------
+//   4. 게시글 취소하기
+// --------------------------------------------------------- */
+async function DeleteLike() {
+  try {
+    await axios.delete(`/bookmarks/post`, {
+      data: { target_id: `${my_bookmark_post_data_id}` },
+    });
+    console.log('삭제 완료!');
+  } catch (err) {
+    console.log(err);
+  }
+}
 
-// //   if (noBtn) {
-// //     noBtn.addEventListener('click', () => {
-// //       void subscribe(); // TS에게 "await 안 해도 되는 비동기"라고 알려줄 때 void 사용
-// //     });
-// //   }
+// /* ---------------------------------------------------------
+//   5. 초기 실행 + 이벤트 바인딩
+// --------------------------------------------------------- */
+async function init() {
+  await loadBookmarkcheck();
 
-// //   if (yesBtn) {
-// //     yesBtn.addEventListener('click', () => {
-// //       void handleUnsubscribe();
-// //     });
-// //   }
-// // }
+  if (noSubBtn) {
+    noSubBtn.addEventListener('click', () => {
+      void subscribe();
+    });
+  }
 
-// // void init();
+  if (yesSubBtn) {
+    yesSubBtn.addEventListener('click', () => {
+      void DeleteSub();
+    });
+  }
+
+  if (likeOff) {
+    likeOff.addEventListener('click', () => {
+      void likePost();
+    });
+  }
+
+  if (likeOn) {
+    likeOn.addEventListener('click', () => {
+      void DeleteLike();
+    });
+  }
+}
+
+void init();
