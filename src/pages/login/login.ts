@@ -6,6 +6,9 @@ const form = document.querySelector('.login-form') as HTMLFormElement;
 const emailInput = document.querySelector('#email') as HTMLInputElement;
 const pwInput = document.querySelector('#password') as HTMLInputElement;
 
+emailInput.value = 'w2@market.com';
+pwInput.value = '11111111';
+
 form.addEventListener('submit', async e => {
   e.preventDefault();
 
