@@ -23,6 +23,7 @@ const myBrunchList = document.querySelector('.my-brunch-list') as HTMLElement;
 if (libraryRoot) {
   //로그인 안되어있으면 로그인페이지로 이동하기
   if (!savedUser) {
+    alert('로그인이 필요한 페이지입니다.');
     window.location.href = '/src/pages/login/login.html';
   }
   initRecentPosts();
